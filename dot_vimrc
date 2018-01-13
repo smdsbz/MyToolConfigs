@@ -1,0 +1,55 @@
+" Configuration file for vim
+set modelines=0     " CVE-2007-2438
+
+" Normally we use vim-extensions. If you want true vi-compatibility
+" remove change the following statements
+set nocompatible    " Use Vim defaults instead of 100% vi compatibility
+set backspace=2     " more powerful backspacing
+
+" Don't write backup file if vim is being called by "crontab -e"
+au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
+" Don't write backup file if vim is being called by "chpass"
+au BufWrite /private/etc/pw.* set nowritebackup nobackup
+
+let skip_defaults_vim=1
+
+
+" My configs
+
+syntax on       " highlight
+" set showmatch     " hl matching brackets
+" set matchtime=5
+set number      " line number
+set colorcolumn=80
+
+" indentation
+set smartindent
+set autoindent
+
+set confirm     " confirm before :q etc.
+
+" TABs
+set tabstop=8
+set softtabstop=0 expandtab
+set shiftwidth=4
+set smarttab
+
+" search
+" set hlsearch        " search highlight
+" set incsearch       " search while typing
+
+" encoding
+set encoding=utf-8
+set fileencodings=utf8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
+
+" status
+set ruler           " cursor pos
+set showcmd         " show command
+
+set scrolloff=5     " lines under / above cursor-line
+set mouse=a
+
+" file
+set autowrite       " write when switching buffer
+filetype plugin indent on
+
