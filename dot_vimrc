@@ -17,10 +17,12 @@ let skip_defaults_vim=1
 " My configs
 
 syntax on       " highlight
+set background=dark
 " set showmatch     " hl matching brackets
 " set matchtime=5
 set number      " line number
 set colorcolumn=80
+hi ColorColumn ctermbg=DarkGray
 
 " indentation
 set smartindent
@@ -29,7 +31,7 @@ set autoindent
 set confirm     " confirm before :q etc.
 
 " TABs
-set tabstop=8
+set tabstop=4
 set softtabstop=0 expandtab
 set shiftwidth=4
 set smarttab
