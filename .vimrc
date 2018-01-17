@@ -16,42 +16,48 @@ let skip_defaults_vim=1
 
 " My configs
 
+" Window Display Styles
+filetype plugin indent on
 syntax on       " highlight
 set background=dark
-" set showmatch     " hl matching brackets
-" set matchtime=5
 set number      " line number
 set colorcolumn=80
 hi ColorColumn ctermbg=DarkGray
 
-" indentation
+" Status Bar
+set ruler       " cursor pos
+set showcmd     " show command
+" set laststatus=2
+
+set scrolloff=5 " lines under / above cursor-line
+set mouse=a
+
+" Split Windows
+set splitbelow
+set splitright
+
+
+" Editing
+" Indentation
 set smartindent
 set autoindent
 
-set confirm     " confirm before :q etc.
-
 " TABs
-set tabstop=8
+set tabstop=4
 set softtabstop=0 expandtab
-set shiftwidth=4
+set shiftwidth=4    " TODO: indent depth auto set
 set smarttab
 
-" search
-" set hlsearch        " search highlight
-" set incsearch       " search while typing
+" Searching
+" set hlsearch    " search highlight
+" set incsearch   " search while typing
+" set showmatch   " hl matching brackets
+" set matchtime=5
 
-" encoding
+" File
+" Encoding
 set encoding=utf-8
-set fileencodings=utf8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
-
-" status
-set ruler           " cursor pos
-set showcmd         " show command
-
-set scrolloff=5     " lines under / above cursor-line
-set mouse=a
-
-" file
+set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
+" Saving / Bakup
 set autowrite       " write when switching buffer
-filetype plugin indent on
-
+set confirm     " confirm before :q etc.
