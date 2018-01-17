@@ -16,19 +16,28 @@ let skip_defaults_vim=1
 
 " My configs
 
-" Window Display Styles
+set t_Co=256
 colorscheme elflord " base style
+
+" Window Display Styles
 filetype plugin indent on
 syntax on       " highlight
 set background=dark
 set number      " line number
 set colorcolumn=80
-highlight ColorColumn ctermbg=DarkGray
+highlight ColorColumn ctermbg=239
 highlight LineNr ctermfg=DarkYellow
-" highlight CursorLine cterm=None ctermbg=Black
 highlight CursorLineNr ctermfg=LightYellow
-highlight CursorLine cterm=None
+highlight CursorLine cterm=None ctermbg=237
+" highlight CursorLine cterm=None
 set cursorline
+highlight Normal ctermbg=234
+
+highlight Todo cterm=bold ctermfg=LightYellow ctermbg=None
+" HACK: `cterm=italic`
+"       Terminal.app on macOS actually display italic texts by
+"       switching their `ctermfg`s and `ctermbg`s
+highlight Error cterm=italic ctermfg=LightRed ctermbg=None
 
 " Status Bar
 set ruler       " cursor pos
