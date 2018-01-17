@@ -23,13 +23,14 @@ set background=dark
 set number      " line number
 set colorcolumn=80
 hi ColorColumn ctermbg=DarkGray
+set cursorline
 
 " Status Bar
 set ruler       " cursor pos
 set showcmd     " show command
-" set laststatus=2
+set laststatus=2
 
-set scrolloff=5 " lines under / above cursor-line
+set scrolloff=4 " lines under / above cursor-line
 set mouse=a
 
 " Split Windows
@@ -49,15 +50,17 @@ set shiftwidth=4    " TODO: indent depth auto set
 set smarttab
 
 " Searching
-" set hlsearch    " search highlight
-" set incsearch   " search while typing
+set hlsearch    " search highlight
+set incsearch   " search while typing
 " set showmatch   " hl matching brackets
 " set matchtime=5
+
 
 " File
 " Encoding
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
+
 " Saving / Bakup
 set autowrite       " write when switching buffer
 set confirm     " confirm before :q etc.
