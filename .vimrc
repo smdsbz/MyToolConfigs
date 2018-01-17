@@ -17,12 +17,17 @@ let skip_defaults_vim=1
 " My configs
 
 " Window Display Styles
+colorscheme elflord " base style
 filetype plugin indent on
 syntax on       " highlight
 set background=dark
 set number      " line number
 set colorcolumn=80
-hi ColorColumn ctermbg=DarkGray
+highlight ColorColumn ctermbg=DarkGray
+highlight LineNr ctermfg=DarkYellow
+" highlight CursorLine cterm=None ctermbg=Black
+highlight CursorLineNr ctermfg=LightYellow
+highlight CursorLine cterm=None
 set cursorline
 
 " Status Bar
