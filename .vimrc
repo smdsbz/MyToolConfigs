@@ -58,7 +58,7 @@ set smartindent
 set autoindent
 
 " TABs
-set tabstop=4
+set tabstop=8
 set softtabstop=0 expandtab
 set shiftwidth=4    " TODO: indent depth auto set
 set smarttab
