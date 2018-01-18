@@ -25,13 +25,16 @@ syntax on       " highlight
 set background=dark
 set number      " line number
 set colorcolumn=80
+highlight Normal ctermbg=234
 highlight ColorColumn ctermbg=239
 highlight LineNr ctermfg=DarkYellow
 highlight CursorLineNr ctermfg=LightYellow
 highlight CursorLine cterm=None ctermbg=237
 " highlight CursorLine cterm=None
 set cursorline
-highlight Normal ctermbg=234
+
+highlight Pmenu ctermfg=White ctermbg=237
+highlight PmenuSel ctermfg=White ctermbg=243
 
 highlight Todo cterm=bold ctermfg=LightYellow ctermbg=None
 " HACK: `cterm=italic`
