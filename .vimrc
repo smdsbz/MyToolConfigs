@@ -16,7 +16,7 @@ let skip_defaults_vim=1
 
 " My configs
 
-set t_Co=256
+" set t_Co=256
 colorscheme elflord " base style
 
 " Window Display Styles
@@ -75,6 +75,17 @@ set incsearch   " search while typing
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
 
-" Saving / Bakup
-set autowrite       " write when switching buffer
+" Saving / Backup
+set autowrite   " write when switching buffer
 set confirm     " confirm before :q etc.
+
+" set modeline
+" set modelines=5
+
+
+" Personal Code Style Preferences
+" Tabs
+autocmd BufEnter *.[c|h][pp]?       set sw=2
+autocmd BufEnter *.[js|html|css]    set sw=2
+autocmd BufEnter *.py               set sw=4
+
