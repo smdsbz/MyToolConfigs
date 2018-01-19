@@ -31,7 +31,8 @@ highlight LineNr ctermfg=DarkYellow
 highlight CursorLineNr ctermfg=LightYellow
 highlight CursorLine cterm=None ctermbg=237
 " highlight CursorLine cterm=None
-set cursorline
+highlight CursorColumn ctermbg=237
+set cursorline cursorcolumn
 
 " so I have a better sense of where I'm at...
 highlight StatusLineNC cterm=None ctermfg=Black ctermbg=247
