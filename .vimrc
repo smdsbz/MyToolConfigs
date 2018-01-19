@@ -33,14 +33,14 @@ highlight CursorLine cterm=None ctermbg=237
 " highlight CursorLine cterm=None
 set cursorline
 
+" so I have a better sense of where I'm at...
+highlight StatusLineNC cterm=None ctermfg=Black ctermbg=247
+
 highlight Pmenu ctermfg=White ctermbg=237
 highlight PmenuSel ctermfg=White ctermbg=243
 
 highlight Todo cterm=bold ctermfg=LightYellow ctermbg=None
-" HACK: `cterm=italic`
-"       Terminal.app on macOS actually display italic texts by
-"       switching their `ctermfg`s and `ctermbg`s
-highlight Error cterm=italic ctermfg=LightRed ctermbg=None
+highlight Error cterm=reverse ctermfg=LightRed ctermbg=None
 
 " Status Bar
 set ruler       " cursor pos
