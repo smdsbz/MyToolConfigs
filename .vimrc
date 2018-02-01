@@ -17,7 +17,7 @@ let skip_defaults_vim=1
 " My configs
 
 " set t_Co=256
-colorscheme elflord " base style
+colorscheme mycolorscheme
 
 " Window Display Styles
 filetype plugin indent on
@@ -25,23 +25,11 @@ syntax on       " highlight
 set background=dark
 set number      " line number
 set colorcolumn=80
-highlight Normal ctermbg=234
-highlight ColorColumn ctermbg=239
-highlight LineNr ctermfg=DarkYellow
-highlight CursorLineNr ctermfg=LightYellow
-highlight CursorLine cterm=None ctermbg=237
-" highlight CursorLine cterm=None
-highlight CursorColumn ctermbg=237
+
 set cursorline cursorcolumn
 
-" so I have a better sense of where I'm at...
-highlight StatusLineNC cterm=None ctermfg=Black ctermbg=247
-
-highlight Pmenu ctermfg=White ctermbg=237
-highlight PmenuSel ctermfg=White ctermbg=243
-
-highlight Todo cterm=bold ctermfg=LightYellow ctermbg=None
-highlight Error cterm=reverse ctermfg=LightRed ctermbg=None
+set foldmethod=manual   " use this before I figure out how to use folds
+set foldcolumn=1    " enough for me, I only use one
 
 " Status Bar
 set ruler       " cursor pos
@@ -62,9 +50,9 @@ set smartindent
 set autoindent
 
 " TABs
-set tabstop=8
+set tabstop=4
 set softtabstop=0 expandtab
-set shiftwidth=4    " TODO: indent depth auto set
+set shiftwidth=4
 set smarttab
 
 " Searching
@@ -90,6 +78,6 @@ set confirm     " confirm before :q etc.
 " Personal Code Style Preferences
 " Tabs
 autocmd BufEnter *.[c|h][pp]?       set sw=2
-autocmd BufEnter *.[js|html|css]    set sw=2
+autocmd BufEnter *.[js|html|css]    set sw=2 cc=120
 autocmd BufEnter *.py               set sw=4
 
