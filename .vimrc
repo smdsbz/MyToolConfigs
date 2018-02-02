@@ -6,6 +6,33 @@ set modelines=0     " CVE-2007-2438
 set nocompatible    " Use Vim defaults instead of 100% vi compatibility
 set backspace=2     " more powerful backspacing
 
+
+" Vundle Settings
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+" Advanced Language Syntax Highlight
+Plugin 'justinmk/vim-syntax-extra'  " C
+Plugin 'hdima/python-syntax'        " Python
+Plugin 'luochen1990/rainbow'        " just admit it, everyone needs this :)
+" Misc
+Plugin 'vim-airline/vim-airline'    " Migrated from Atom.io
+" TODO: Personal tweaks
+Plugin 'terryma/vim-smooth-scroll'
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
+
+call vundle#end()
+filetype plugin indent on
+" End of Vundle Settings
+
+
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
 " Don't write backup file if vim is being called by "chpass"
@@ -78,6 +105,6 @@ set confirm     " confirm before :q etc.
 " Personal Code Style Preferences
 " Tabs
 autocmd BufEnter *.[c|h][pp]?       set sw=2
-autocmd BufEnter *.[js|html|css]    set sw=2 cc=120
+autocmd BufEnter *.[js|html|css]?   set sw=2 cc=120
 autocmd BufEnter *.py               set sw=4
 

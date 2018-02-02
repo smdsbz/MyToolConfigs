@@ -55,14 +55,14 @@ hi link Debug		Special
 
 " Additions made by XG Z
 " Targeting xterm-256
+" Trying to make it atom-dark
 
-highlight Normal ctermbg=234
+highlight Normal ctermfg=254 ctermbg=234
 highlight ColorColumn ctermbg=239
 highlight LineNr ctermfg=DarkYellow
 highlight CursorLineNr ctermfg=LightYellow
-highlight CursorLine cterm=None ctermbg=237
-highlight CursorColumn ctermbg=237
-set cursorline cursorcolumn
+highlight CursorLine cterm=None ctermbg=235
+highlight CursorColumn ctermbg=235
 
 " so I have a better sense of where I'm at...
 highlight StatusLineNC cterm=None ctermfg=Black ctermbg=247
@@ -73,5 +73,21 @@ highlight PmenuSel ctermfg=White ctermbg=243
 highlight Todo cterm=bold ctermfg=LightYellow ctermbg=None
 highlight Error cterm=reverse ctermfg=LightRed ctermbg=None
 
-highlight Folded ctermbg=234
-highlight FoldColumn ctermbg=Black
+highlight Folded ctermbg=None ctermfg=80
+highlight FoldColumn ctermbg=Black ctermfg=80
+
+" Syntax Highlight
+highlight String ctermfg=112
+highlight Constant ctermfg=171
+highlight Operator ctermfg=251
+highlight Delimiter ctermfg=251
+highlight Function cterm=bold ctermfg=215
+highlight Comment ctermfg=242
+" highlight Type
+highlight Structure ctermfg=143
+highlight Typedef ctermfg=143
+highlight StorageClass ctermfg=254
+
+highlight Statement ctermfg=111
+highlight PreProc ctermfg=147
+
