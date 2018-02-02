@@ -23,10 +23,10 @@ Plugin 'luochen1990/rainbow'        " just admit it, everyone needs this :)
 Plugin 'vim-airline/vim-airline'    " Migrated from Atom.io
 " TODO: Personal tweaks
 Plugin 'terryma/vim-smooth-scroll'
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 5, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 5, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 5, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 5, 4)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 3, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 3, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 3, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 3, 4)<CR>
 
 call vundle#end()
 filetype plugin indent on
@@ -43,7 +43,10 @@ let skip_defaults_vim=1
 
 " My configs
 
-" set t_Co=256
+" More Todos
+syn keyword myTodo contained TODO HACH NOTE CMBK
+hi def link myTodo Todo
+
 colorscheme mycolorscheme
 
 " Window Display Styles
@@ -104,7 +107,12 @@ set confirm     " confirm before :q etc.
 
 " Personal Code Style Preferences
 " Tabs
-autocmd BufEnter *.[c|h][pp]?       set sw=2
-autocmd BufEnter *.[js|html|css]?   set sw=2 cc=120
-autocmd BufEnter *.py               set sw=4
+autocmd BufEnter *.c                set sw=2 cc=80
+autocmd BufEnter *.cpp              set sw=2 cc=80
+autocmd BufEnter *.h                set sw=2 cc=80
+autocmd BufEnter *.hpp              set sw=2 cc=80
+autocmd BufEnter *.py               set sw=4 cc=80
+autocmd BufEnter *.html             set sw=2 cc=120
+autocmd BufEnter *.js               set sw=2 cc=80
+autocmd BufEnter *.js               set sw=2 cc=80
 

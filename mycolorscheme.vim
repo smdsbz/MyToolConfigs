@@ -86,7 +86,7 @@ highlight Comment ctermfg=242
 " highlight Type
 highlight Structure ctermfg=143
 highlight Typedef ctermfg=143
-highlight StorageClass ctermfg=254
+highlight StorageClass ctermfg=121
 
 highlight Statement ctermfg=111
 highlight PreProc ctermfg=147
