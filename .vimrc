@@ -18,8 +18,14 @@ Plugin 'VundleVim/Vundle.vim'
 " Advanced Language Syntax Highlight
 Plugin 'justinmk/vim-syntax-extra'  " C
 Plugin 'hdima/python-syntax'        " Python
-Plugin 'luochen1990/rainbow'        " just admit it, everyone needs this :)
+let python_highlight_all=1
+" Enhanced Editing
+Plugin 'easymotion/vim-easymotion'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-commentary'
+" Plugin 'Townk/vim-autoclose'
 " Misc
+Plugin 'luochen1990/rainbow'        " just admit it, everyone needs this :)
 Plugin 'vim-airline/vim-airline'    " Migrated from Atom.io
 " TODO: Personal tweaks
 Plugin 'terryma/vim-smooth-scroll'
@@ -66,12 +72,22 @@ set ruler       " cursor pos
 set showcmd     " show command
 set laststatus=2
 
+" Movement
 set scrolloff=4 " lines under / above cursor-line
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+noremap H ^
+noremap L $
 set mouse=a
 
 " Split Windows
 set splitbelow
 set splitright
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+
 
 
 " Editing
@@ -84,12 +100,20 @@ set tabstop=4
 set softtabstop=0 expandtab
 set shiftwidth=4
 set smarttab
+" keep selected
+vnoremap < <gv
+vnoremap > >gv
 
 " Searching
 set hlsearch    " search highlight
 set incsearch   " search while typing
 " set showmatch   " hl matching brackets
 " set matchtime=5
+
+" Auto-Complete
+set ignorecase
+set smartcase
+inoremap {<CR> {<CR>}<Esc>O
 
 
 " File
@@ -107,12 +131,10 @@ set confirm     " confirm before :q etc.
 
 " Personal Code Style Preferences
 " Tabs
-autocmd BufEnter *.c                set sw=2 cc=80
-autocmd BufEnter *.cpp              set sw=2 cc=80
-autocmd BufEnter *.h                set sw=2 cc=80
-autocmd BufEnter *.hpp              set sw=2 cc=80
-autocmd BufEnter *.py               set sw=4 cc=80
-autocmd BufEnter *.html             set sw=2 cc=120
-autocmd BufEnter *.js               set sw=2 cc=80
-autocmd BufEnter *.js               set sw=2 cc=80
-
+autocmd FileType c      setlocal sw=2
+autocmd FileType cpp    setlocal sw=2
+autocmd FileType html   setlocal sw=2 cc=120
+autocmd FileType javascript setlocal sw=2
+autocmd FileType css    setlocal sw=2
+autocmd FileType python setlocal sw=4
+autocmd FileType python inoremap # X<c-h>#
