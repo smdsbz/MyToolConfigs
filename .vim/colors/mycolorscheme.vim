@@ -57,7 +57,8 @@ hi link Debug		Special
 " Targeting xterm-256
 " Trying to make it atom-dark
 
-highlight Normal ctermfg=254 ctermbg=234
+" background slightly lit for eye protection maybe
+highlight Normal ctermfg=253 ctermbg=233
 highlight ColorColumn ctermbg=239
 highlight LineNr ctermfg=DarkYellow
 highlight CursorLineNr ctermfg=LightYellow
@@ -70,8 +71,9 @@ highlight StatusLineNC cterm=None ctermfg=Black ctermbg=247
 highlight Pmenu ctermfg=White ctermbg=237
 highlight PmenuSel ctermfg=White ctermbg=243
 
-highlight Todo cterm=bold ctermfg=LightYellow ctermbg=None
+highlight Todo cterm=bold ctermfg=cyan ctermbg=None
 highlight Error cterm=reverse ctermfg=LightRed ctermbg=None
+highlight Search cterm=reverse ctermfg=DarkRed ctermbg=None
 
 highlight Folded ctermbg=None ctermfg=80
 highlight FoldColumn ctermbg=Black ctermfg=80
@@ -79,8 +81,9 @@ highlight FoldColumn ctermbg=Black ctermfg=80
 " Syntax Highlight
 highlight String ctermfg=112
 highlight Constant ctermfg=171
-highlight Operator ctermfg=251
-highlight Delimiter ctermfg=251
+highlight Operator ctermfg=248
+highlight Delimiter ctermfg=248
+highlight MatchParen ctermfg=Black ctermbg=6
 highlight Function cterm=bold ctermfg=215
 highlight Comment ctermfg=242
 " highlight Type
@@ -90,4 +93,11 @@ highlight StorageClass ctermfg=121
 
 highlight Statement ctermfg=111
 highlight PreProc ctermfg=147
+
+" More Todos
+match Todo /\vTODO:|HACK:|NOTE:|CMBK:|DEBUG:/
+
+" list chars - no more TAB and nbsp issues!
+set listchars=tab:»·,trail:·
+set list
 
