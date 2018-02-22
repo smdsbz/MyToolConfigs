@@ -59,11 +59,12 @@ hi link Debug		Special
 
 " background slightly lit for eye protection maybe
 highlight Normal ctermfg=253 ctermbg=233
-highlight ColorColumn ctermbg=239
-highlight LineNr ctermfg=DarkYellow
-highlight CursorLineNr ctermfg=LightYellow
-highlight CursorLine cterm=None ctermbg=235
-highlight CursorColumn ctermbg=235
+highlight ColorColumn cterm=None ctermbg=234
+highlight LineNr ctermfg=237
+highlight CursorLineNr ctermfg=242 ctermbg=234
+highlight CursorLine cterm=None ctermbg=234
+highlight CursorColumn ctermbg=234
+highlight Visual ctermfg=Black ctermbg=242
 
 " so I have a better sense of where I'm at...
 highlight StatusLineNC cterm=None ctermfg=Black ctermbg=247
@@ -75,17 +76,23 @@ highlight Todo cterm=bold ctermfg=cyan ctermbg=None
 highlight Error cterm=reverse ctermfg=LightRed ctermbg=None
 highlight Search cterm=reverse ctermfg=DarkRed ctermbg=None
 
-highlight Folded ctermbg=None ctermfg=80
-highlight FoldColumn ctermbg=Black ctermfg=80
+highlight Folded ctermbg=None ctermfg=242
+highlight FoldColumn ctermbg=233 ctermfg=242
+highlight EndOfBuffer ctermfg=233
 
 " Syntax Highlight
 highlight String ctermfg=112
 highlight Constant ctermfg=171
 highlight Operator ctermfg=248
 highlight Delimiter ctermfg=248
-highlight MatchParen ctermfg=Black ctermbg=6
-highlight Function cterm=bold ctermfg=215
-highlight Comment ctermfg=242
+highlight MatchParen ctermfg=Black ctermbg=cyan
+" highlight MatchParen cterm=underline ctermbg=None ctermfg=None
+highlight Function cterm=None ctermfg=215
+highlight Comment cterm=italic ctermfg=242
+" In regular vim, `italic` == `reverse`, which is ugly!
+if !has('nvim')
+    highlight Comment cterm=None
+endif
 " highlight Type
 highlight Structure ctermfg=143
 highlight Typedef ctermfg=143
@@ -93,11 +100,4 @@ highlight StorageClass ctermfg=121
 
 highlight Statement ctermfg=111
 highlight PreProc ctermfg=147
-
-" More Todos
-match Todo /\vTODO:|HACK:|NOTE:|CMBK:|DEBUG:/
-
-" list chars - no more TAB and nbsp issues!
-set listchars=tab:»·,trail:·
-set list
 
