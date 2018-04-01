@@ -21,6 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'rakr/vim-one'
 " Advanced Language Syntax Highlight
 Plugin 'sheerun/vim-polyglot'       " one-to-rule-it-all syntax plugin
+Plugin 'chrisbra/csv.vim'           " better looking of csv
 " from 'ioctol/vim-cpp-enhanced-highlight'
 let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
@@ -79,6 +80,7 @@ Plugin 'itchyny/vim-cursorword'
 if has('nvim')
     " Non-Async Completes
     Plugin 'Rip-Rip/clang_complete' " C/C++
+    let g:clang_use_library=1
     let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
     " Async Completes
     Plugin 'Shougo/deoplete.nvim'
@@ -149,10 +151,14 @@ set colorcolumn=80      " Very Pythonic
 
 set cursorline cursorcolumn
 
-set foldmethod=manual   " code folding: deal with loooooong code blocks
-set foldcolumn=2        " show fold open/close: enough for me, I only use one
+set foldmethod=syntax   " code folding: deal with loooooong code blocks
+set foldnestmax=2       " too many numbers on left would be a bother
+set foldlevel=5         " show all code on start-up
+set foldcolumn=3        " show fold open/close: enough for me, I only use one
 " general short-hand for folding bracket-closed blocks
 nnoremap <Leader>z vf{%zf
+" jump to first line of the previous fold
+nnoremap zk 2zkzj
 
 " Mode specific cursor style
 " from https://github.com/mhinz/vim-galore#change-cursor-style-dependent-on-mode
@@ -177,8 +183,14 @@ set showtabline=2
 " Movement
 set scrolloff=5 " lines under / above cursor-line
 " scroll faster!
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+nnoremap <silent> <C-e> <C-e>:sleep 3m<CR><C-e>:sleep 3m<CR><C-e>
+nnoremap <silent> <C-y> <C-y>:sleep 3m<CR><C-y>:sleep 3m<CR><C-y>
+" scroll buffer without leaving insert mode
+" I'm sorry, but this is not emacs :)
+" imap <silent> <C-e> <space><BS><Esc><C-e>`^i
+" imap <silent> <C-y> <space><BS><Esc><C-y>`^i
+" imap <silent> <C-h> <C-o>h
+" imap <silent> <C-l> <C-o>l
 " too far to reach!
 nnoremap H ^
 nnoremap L $
@@ -225,7 +237,8 @@ vnoremap > >gv
 set hlsearch    " search highlight
 nohlsearch      " don't show on every :source
 set incsearch   " search while typing
-nnoremap <BS> :nohlsearch<CR>
+" <BS> to clear view
+nnoremap <BS> :nohlsearch<CR><C-W>z
 " set showmatch
 " set matchtime=5
 " Visual
@@ -233,17 +246,27 @@ nnoremap <BS> :nohlsearch<CR>
 vnoremap <Left> <Esc>`<
 vnoremap <Right> <Esc>`>
 
+if has('nvim')
+    set inccommand=nosplit
+endif
+
 " Auto-Complete
 set path+=**
 set ignorecase  " default ignore case when completing
 set smartcase   " will stop if you type an uppercase
 set wildmode=list:longest,full
 set completeopt=menu,menuone,longest,noselect,preview
+set previewheight=2     " preview-window to display args for completed functons
+
 " simple pair brackets
 inoremap {<CR> {<CR>}<C-o>O
 " simple vim-surround under visual-mode
-vnoremap ( <Esc>`<i(<Esc>`>la)<Esc>
-vnoremap ` <Esc>`<i`<Esc>`>la`<Esc>
+vnoremap ( <Esc>`<i(<Esc>`>la)<Esc>`<lv`>l
+vnoremap [ <Esc>`<i[<Esc>`>la]<Esc>`<lv`>l
+vnoremap ` <Esc>`<i`<Esc>`>la`<Esc>`<lv`>l
+" vnoremap * <Esc>`<i*<Esc>`>la*<Esc>`<lv`>l
+vnoremap " <Esc>`<i"<Esc>`>la"<Esc>`<lv`>l
+vnoremap ' <Esc>`<i'<Esc>`>la'<Esc>`<lv`>l
 
 " Copy / Paste
 set clipboard=unnamed
@@ -278,7 +301,7 @@ if has("nvim")
     " tnoremap <Leader>7 <C-\><C-n>7gt
     " tnoremap <Leader>8 <C-\><C-n>8gt
     " fast open terminal below
-    nnoremap <silent> <C-\> :split term://zsh<CR>:resize 30<CR>a
+    nnoremap <silent> <C-\> :split<CR>:term<CR>:resize 30<CR>a
 endif
 
 
@@ -304,8 +327,11 @@ augroup filetype_specifics
     autocmd FileType javascript.jsx setlocal sw=2
     autocmd FileType json   setlocal sw=2 cc=120
     autocmd FileType css    setlocal sw=2
-    autocmd FileType python setlocal sw=4
+    autocmd FileType python setlocal sw=4 foldmethod=indent
     " don't jump to first col when inserting inline comments
     autocmd FileType python inoremap # X<c-h>#
+    autocmd BufEnter *.wxml setlocal filetype=xml sw=2 cc=120
+    autocmd FileType asm    setlocal sw=8 ts=8
+    autocmd BufEnter *.ASM  setlocal filetype=asm
 augroup END
 
