@@ -158,7 +158,7 @@ set foldcolumn=3        " show fold open/close: enough for me, I only use one
 " general short-hand for folding bracket-closed blocks
 nnoremap <Leader>z vf{%zf
 " jump to first line of the previous fold
-nnoremap zk 2zkzj
+" nnoremap zk 2zkzj
 
 " Mode specific cursor style
 " from https://github.com/mhinz/vim-galore#change-cursor-style-dependent-on-mode
@@ -269,7 +269,8 @@ vnoremap " <Esc>`<i"<Esc>`>la"<Esc>`<lv`>l
 vnoremap ' <Esc>`<i'<Esc>`>la'<Esc>`<lv`>l
 
 " Copy / Paste
-set clipboard=unnamed
+" set clipboard=unnamed
+vnoremap y "+y
 
 " Misc
 " set matchpairs+=<:>
@@ -312,9 +313,14 @@ augroup linenr_toogle
     autocmd BufLeave * setlocal norelativenumber
 augroup END
 
+" one-key markdown preview
+" TODO: FileType specific
+" nnoremap <C-q> :!open -a /Applications/Typora.app %<CR><CR>
+
 " Personal Code Style Preferences
 augroup filetype_specifics
     autocmd!
+    autocmd FileType markdown nnoremap <buffer> <C-q> :!open -a /Applications/Typora.app %<CR><CR>
     " C - case {<CR> indentation fixup
     autocmd FileType c      setlocal cindent cinoptions=l1
     autocmd FileType c      setlocal sw=2
