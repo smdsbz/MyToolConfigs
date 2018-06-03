@@ -6,22 +6,30 @@ set modelines=0     " CVE-2007-2438
 set nocompatible    " Use Vim defaults instead of 100% vi compatibility
 set backspace=2     " more powerful backspacing
 
+" automatic install vim-plug
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Vundle Settings
-set nocompatible
-filetype off
+call plug#begin('~/.local/share/nvim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
+let g:python3_host_prog = '/home/smdsbz/.config/nvim/neovim3/bin/python3'
 
 " Look Better?
-" Plugin 'joshdick/onedark.vim'
-" Plugin 'rakr/vim-one'
+set termguicolors
+Plug 'joshdick/onedark.vim'
+" let g:onedark_termcolors = 256
+let g:onedark_terminal_italics = 1
+" Plug 'tomasr/molokai'
+" let g:molokai_original = 1
+" Plug 'rakr/vim-one'
+" let g:one_allow_italics = 1
+" Plug 'gosukiwi/vim-atom-dark'
 " Advanced Language Syntax Highlight
-Plugin 'sheerun/vim-polyglot'       " one-to-rule-it-all syntax plugin
-Plugin 'chrisbra/csv.vim'           " better looking of csv
+Plug 'sheerun/vim-polyglot'       " one-to-rule-it-all syntax plugin
+Plug 'chrisbra/csv.vim'           " better looking of csv
 " from 'ioctol/vim-cpp-enhanced-highlight'
 let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
@@ -31,43 +39,77 @@ let g:python_highlight_all=1
 let g:python_version_2=0
 let g:python_highlight_space_errors=0
 " Enhanced Motion
-Plugin 'easymotion/vim-easymotion'
-" Plugin 'terryma/vim-multiple-cursors'
-" set g:multi_cursor_exit_from_insert_mode=1
+Plug 'easymotion/vim-easymotion'
+Plug 'kshenoy/vim-signature'
+set signcolumn=yes              " always show column
+Plug 'terryma/vim-multiple-cursors'
+let g:multi_cursor_exit_from_visual_mode=1
+let g:multi_cursor_exit_from_insert_mode=0
 " Enhanced Editing
-Plugin 'tpope/vim-commentary'
-" Plugin 'Townk/vim-autoclose'
+Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsCenterLine = 0
 " Misc
-Plugin 'luochen1990/rainbow'        " just admit it, everyone needs this :)
-let g:rainbow_active = 0            " off unless specified :RainbowToogle
-Plugin 'vim-airline/vim-airline'    " better status line
+Plug 'luochen1990/rainbow'        " just admit it, everyone needs this :)
+let g:rainbow_active = 0          " off unless specified :RainbowToogle
+Plug 'vim-airline/vim-airline'    " better status line
 let g:airline#extensions#tabline#enabled=1  " airline themed tabline
 let g:airline#extensions#tabline#show_tab_type=0    " only tabs
 let g:airline#extensions#tabline#show_splits=0
 let g:airline#extensions#tabline#show_buffers=0
 let g:airline#extensions#tabline#tab_nr_type=1  " display index of the tabpage
+let g:airline#extensions#tabline#overflow_marker='…'
 let g:airline#extensions#tabline#formatter='unique_tail_improved'   " short filenames in tabline
+" let g:airline#extensions#tabline#left_sep = '▌'
+" let g:airline#extensions#tabline#left_alt_sep = '│'
+" let g:airline#extensions#tabline#right_sep = '▐'
+" let g:airline#extensions#tabline#right_alt_sep = '│'
+let g:airline#extensions#tabline#left_sep = '▒'
+let g:airline#extensions#tabline#left_alt_sep = ' '
+let g:airline#extensions#tabline#right_sep = '▒'
+let g:airline#extensions#tabline#right_alt_sep = ' '
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#right_sep = ''
+" let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#show_close_button=0    " no one use it
-let g:airline_mode_map = {
-  \ '__' : '-',
-  \ 'n'  : 'N',
-  \ 'i'  : 'I',
-  \ 'R'  : 'R',
-  \ 'c'  : 'C',
-  \ 'v'  : 'V',
-  \ 'V'  : 'VL',
-  \ '' : 'VB',
-  \ 's'  : 'S',
-  \ 'S'  : 'S',
-  \ '' : 'S',
-  \ }
-" let g:airline_left_sep='▶'      " kinda jaggy, decided not to use it
-" let g:airline_right_sep='◀'
-let g:airline_skip_empty_sections=1
+" let g:airline_mode_map = {
+"   \ '__' : '-',
+"   \ 'n'  : 'N',
+"   \ 'i'  : 'I',
+"   \ 'R'  : 'R',
+"   \ 'c'  : 'C',
+"   \ 'v'  : 'V',
+"   \ 'V'  : 'V-LINE',
+"   \ '' : 'V-BLOCK',
+"   \ 's'  : 'S',
+"   \ 'S'  : 'S',
+"   \ '' : 'S',
+"   \ }
+" let g:airline_left_sep = '▌'
+" let g:airline_right_sep = '▐'
+let g:airline_left_sep = '▒'
+let g:airline_left_alt_sep = '│'
+let g:airline_right_sep = '▒'
+let g:airline_right_alt_sep = '│'
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#alt_sep = 1
+let g:airline_detect_iminsert = 1
+let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-Plugin 'vim-airline/vim-airline-themes'
-let g:airline_theme='angr'
-Plugin 'terryma/vim-smooth-scroll'  " should have better experience using term
+Plug 'vim-airline/vim-airline-themes'
+" let g:airline_theme = 'angr'
+let g:airline_theme = 'onedark'
+" let g:airline_theme = 'molokai'
+" let g:airline_theme = 'one'
+" NOTE: vim-airline-clock causing memory leak!
+" Plug 'enricobacis/vim-airline-clock'
+" let g:airline#extensions#clock#format = '│ %b %d %T'
+" let g:airline#extensions#clock#updatetime = 1000
+Plug 'terryma/vim-smooth-scroll'  " should have better experience using term
                                     " other than mac ones
 if has('nvim')
     noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 3, 2)<CR>
@@ -75,40 +117,42 @@ if has('nvim')
     noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 3, 4)<CR>
     noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 3, 4)<CR>
 endif
-Plugin 'itchyny/vim-cursorword'
+" Plug 'itchyny/vim-cursorword'
 " Auto-Complete
 if has('nvim')
     " Non-Async Completes
-    Plugin 'Rip-Rip/clang_complete' " C/C++
-    let g:clang_use_library=1
-    let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+    " Plug 'Rip-Rip/clang_complete' " C/C++
+    " let g:clang_use_library=1
+    " let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
     " Async Completes
-    Plugin 'Shougo/deoplete.nvim'
+    Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup=1
-    " Plugin 'tweekmonster/deoplete-clang2'   " C/C++
-    " let g:deoplete#sources#clang#autofill_neomake=0
-    Plugin 'zchee/deoplete-jedi'    " Python
-    " " dedicate python runtime for completion
-    let g:python3_host_prog='/Users/smdsbz/.vim/nvim-py3/bin/python3'
-    " Plugin 'autozimu/LanguageClient-neovim'
-    " let g:LanguageClient_autoStart = 1
-    " Plugin 'cquery-project/cquery'
-    " let g:LanguageClient_serverCommands = {
-    "     \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
-    "     \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
-    "     \ 'python': ['python-language-server'],
+    " Plug 'autozimu/LanguageClient-neovim', {
+    "     \ 'branch': 'next',
+    "     \ 'do': 'bash install.sh',
     "     \ }
-    " let g:LanguageClient_loadSettings = 1
-    " let g:LanguageClient_settingsPath = '/User/smdsbz/.vim/languageClient_settings.json'
-    " set completefunc=LanguageClient#complete
-    " nnoremap gh :call LanguageClient_textDocument_hover()<CR>
-    " nnoremap gd :call LanguageClient_textDocument_definition()<CR>
-    " nnoremap gs :call LanguageClient_textDocument_documentSymbol()<CR>
+    " " (Optional) Multi-entry selection UI.
+    " Plug 'junegunn/fzf'
+    Plug 'Shougo/denite.nvim'
+    " C/C++
+    Plug 'Shougo/deoplete-clangx'
+    Plug 'Shougo/neoinclude.vim'
+    " Plug 'tweekmonster/deoplete-clang2'
+    " let g:deoplete#sources#clang#autofill_neomake=0
+    " Python
+    Plug 'zchee/deoplete-jedi'
+    " JavaScript
+    Plug 'wokalski/autocomplete-flow'
+    " Emoji
+    Plug 'fszymanski/deoplete-emoji'
 endif
+" airline decor
+" let g:airline_section_b = '[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]'
+let g:airline_section_b = '┬┴┤･ω･)ﾉ├┬┴┬┴'
+" let g:airline_section_b = '≈≈≈[,,_,,]:3'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
-" End of Vundle Settings
 
 
 augroup backup_strategies
@@ -119,21 +163,31 @@ augroup backup_strategies
     au BufWrite /private/etc/pw.* set nowritebackup nobackup
 augroup END
 
+if has("persistent_undo")
+    set undodir=~/.vim_undodir/
+    set undofile
+endif
+
 let skip_defaults_vim=1
 
 
 " My configs
 
+set background=dark
+" mycolorscheme
+" colorscheme mycolorscheme
+colorscheme onedark
+" colorscheme molokai
+" colorscheme one
+" colorscheme atom-dark-256
+
 " more convenient <Leader> key
 let mapleader="\ "
-
-" mycolorscheme
-source ~/.vim/colors/mycolorscheme.vim
-colorscheme mycolorscheme
-
 " list chars - no more TAB and nbsp issues!
-set listchars=tab:»·,trail:·
+set listchars=tab:»-,trail:·
 set list
+" vertical split char
+set fillchars+=vert:\│
 
 " Window Display Styles
 filetype plugin indent on
@@ -146,31 +200,20 @@ augroup END
 
 syntax on               " highlight
 
-set number relativenumber   " line number
+set nonumber norelativenumber   " line number
 set colorcolumn=80      " Very Pythonic
 
-set cursorline cursorcolumn
+set cursorline
+" set colorcolumn
 
 set foldmethod=syntax   " code folding: deal with loooooong code blocks
 set foldnestmax=2       " too many numbers on left would be a bother
 set foldlevel=5         " show all code on start-up
-set foldcolumn=3        " show fold open/close: enough for me, I only use one
+set foldcolumn=4        " show fold open/close: enough for me, I only use one
 " general short-hand for folding bracket-closed blocks
-nnoremap <Leader>z vf{%zf
+" nnoremap <Leader>z vf{%zf
 " jump to first line of the previous fold
 " nnoremap zk 2zkzj
-
-" Mode specific cursor style
-" from https://github.com/mhinz/vim-galore#change-cursor-style-dependent-on-mode
-if empty($TMUX)
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-else
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-endif
 
 
 " Status Bar
@@ -182,28 +225,19 @@ set showtabline=2
 
 " Movement
 set scrolloff=5 " lines under / above cursor-line
-" scroll faster!
-nnoremap <silent> <C-e> <C-e>:sleep 3m<CR><C-e>:sleep 3m<CR><C-e>
-nnoremap <silent> <C-y> <C-y>:sleep 3m<CR><C-y>:sleep 3m<CR><C-y>
-" scroll buffer without leaving insert mode
-" I'm sorry, but this is not emacs :)
-" imap <silent> <C-e> <space><BS><Esc><C-e>`^i
-" imap <silent> <C-y> <space><BS><Esc><C-y>`^i
-" imap <silent> <C-h> <C-o>h
-" imap <silent> <C-l> <C-o>l
-" too far to reach!
-nnoremap H ^
-nnoremap L $
 set mouse=a
+" scroll faster!
+nnoremap <silent> <C-e> <C-e>:sleep 4m<CR><C-e>:sleep 4m<CR><C-e>
+nnoremap <silent> <C-y> <C-y>:sleep 4m<CR><C-y>:sleep 4m<CR><C-y>
 
 " Split Windows
 set splitbelow
 set splitright
 " simpler surfing through splits
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-l> <C-w>l
 " simpler surfing through tabs
 nnoremap <Leader>1 1gt
 nnoremap <Leader>2 2gt
@@ -237,14 +271,14 @@ vnoremap > >gv
 set hlsearch    " search highlight
 nohlsearch      " don't show on every :source
 set incsearch   " search while typing
-" <BS> to clear view
+" <BS> to clear view - nohl and close preview panel
 nnoremap <BS> :nohlsearch<CR><C-W>z
 " set showmatch
 " set matchtime=5
 " Visual
 " move to visual border easily
-vnoremap <Left> <Esc>`<
-vnoremap <Right> <Esc>`>
+" vnoremap <Left> <Esc>`<
+" vnoremap <Right> <Esc>`>
 
 if has('nvim')
     set inccommand=nosplit
@@ -258,15 +292,6 @@ set wildmode=list:longest,full
 set completeopt=menu,menuone,longest,noselect,preview
 set previewheight=2     " preview-window to display args for completed functons
 
-" simple pair brackets
-inoremap {<CR> {<CR>}<C-o>O
-" simple vim-surround under visual-mode
-vnoremap ( <Esc>`<i(<Esc>`>la)<Esc>`<lv`>l
-vnoremap [ <Esc>`<i[<Esc>`>la]<Esc>`<lv`>l
-vnoremap ` <Esc>`<i`<Esc>`>la`<Esc>`<lv`>l
-" vnoremap * <Esc>`<i*<Esc>`>la*<Esc>`<lv`>l
-vnoremap " <Esc>`<i"<Esc>`>la"<Esc>`<lv`>l
-vnoremap ' <Esc>`<i'<Esc>`>la'<Esc>`<lv`>l
 
 " Copy / Paste
 " set clipboard=unnamed
@@ -279,6 +304,9 @@ vnoremap y "+y
 " File
 " Netrw tweaks
 let g:netrw_banner=0    " disable help banner
+let g:netrw_winsize=25
+let g:netrw_browse_split=4
+let g:netrw_altv=1
 let g:netrw_liststyle=3
 
 " Encoding
@@ -307,20 +335,17 @@ endif
 
 
 " Line Number Settings
-augroup linenr_toogle
-    autocmd!
-    autocmd BufEnter * setlocal relativenumber
-    autocmd BufLeave * setlocal norelativenumber
-augroup END
-
-" one-key markdown preview
-" TODO: FileType specific
-" nnoremap <C-q> :!open -a /Applications/Typora.app %<CR><CR>
+" augroup linenr_toogle
+"     autocmd!
+"     autocmd BufEnter * setlocal relativenumber
+"     autocmd BufLeave * setlocal norelativenumber
+" augroup END
 
 " Personal Code Style Preferences
 augroup filetype_specifics
     autocmd!
-    autocmd FileType markdown nnoremap <buffer> <C-q> :!open -a /Applications/Typora.app %<CR><CR>
+    autocmd FileType markdown nnoremap <buffer> <C-q> :!typora % &<CR><CR>
+    autocmd FileType markdown setlocal cc=120
     " C - case {<CR> indentation fixup
     autocmd FileType c      setlocal cindent cinoptions=l1
     autocmd FileType c      setlocal sw=2
@@ -329,8 +354,9 @@ augroup filetype_specifics
     autocmd FileType cpp    setlocal cindent cinoptions=l1
     autocmd FileType cpp    setlocal sw=2
     autocmd FileType cpp    setlocal makeprg=make
-    autocmd FileType html   setlocal sw=2 cc=120
-    autocmd FileType javascript.jsx setlocal sw=2
+    autocmd FileType html*  setlocal sw=2 cc=120
+    autocmd FileType javascript*    setlocal sw=2
+    autocmd FileType javascript*    setlocal makeprg=npm\ start
     autocmd FileType json   setlocal sw=2 cc=120
     autocmd FileType css    setlocal sw=2
     autocmd FileType python setlocal sw=4 foldmethod=indent
