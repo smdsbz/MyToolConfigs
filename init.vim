@@ -1,3 +1,4 @@
+" Begining {{{
 " Configuration file for vim
 set modelines=0     " CVE-2007-2438
 
@@ -13,21 +14,37 @@ if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" more convenient <Leader> key
+let mapleader="\ "
+
+" }}}
+
+" Plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 
 let g:python3_host_prog = '/home/smdsbz/.config/nvim/neovim3/bin/python3'
 
-" Look Better?
-set termguicolors
+" Terminal 256-color {{{
+if (has("termguicolors"))
+    set termguicolors
+endif
+" }}}
+
+" Color Schemes {{{
 Plug 'joshdick/onedark.vim'
-" let g:onedark_termcolors = 256
-let g:onedark_terminal_italics = 1
-" Plug 'tomasr/molokai'
-" let g:molokai_original = 1
-" Plug 'rakr/vim-one'
-" let g:one_allow_italics = 1
-" Plug 'gosukiwi/vim-atom-dark'
-" Advanced Language Syntax Highlight
+let g:onedark_termcolors=256
+let g:onedark_terminal_italics=1
+Plug 'tomasr/molokai'
+let g:molokai_original=1
+let g:rehash256=1
+Plug 'sjl/badwolf'
+let g:badwolf_tabline=1
+let g:badwolf_css_props_highlight=1
+Plug 'ayu-theme/ayu-vim'
+let ayucolor="dark"
+" }}}
+
+" Syntax Highlighting {{{
 Plug 'sheerun/vim-polyglot'       " one-to-rule-it-all syntax plugin
 Plug 'chrisbra/csv.vim'           " better looking of csv
 " from 'ioctol/vim-cpp-enhanced-highlight'
@@ -38,121 +55,227 @@ let g:cpp_class_decl_highlight=1
 let g:python_highlight_all=1
 let g:python_version_2=0
 let g:python_highlight_space_errors=0
-" Enhanced Motion
+" Misc
+" Plug 'itchyny/vim-cursorword'
+Plug 'luochen1990/rainbow'        " just admit it, everyone needs this :)
+let g:rainbow_active = 0          " off unless specified :RainbowToogle
+Plug 'lfv89/vim-interestingwords'
+let g:interestingWordsRandomiseColors = 1
+" }}}
+
+" Enhanced Motion {{{
+Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
 Plug 'kshenoy/vim-signature'
 set signcolumn=yes              " always show column
 Plug 'terryma/vim-multiple-cursors'
 let g:multi_cursor_exit_from_visual_mode=1
 let g:multi_cursor_exit_from_insert_mode=0
-" Enhanced Editing
+Plug 'terryma/vim-smooth-scroll'    " should have better experience using term
+                                    " other than mac ones
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 3, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 3, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 3, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 3, 4)<CR>
+
+nnoremap <silent> <C-e> <C-e>:sleep 4m<CR><C-e>:sleep 4m<CR><C-e>
+nnoremap <silent> <C-y> <C-y>:sleep 4m<CR><C-y>:sleep 4m<CR><C-y>
+" }}}
+
+" Enhanced Editing {{{
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsCenterLine = 0
-" Misc
-Plug 'luochen1990/rainbow'        " just admit it, everyone needs this :)
-let g:rainbow_active = 0          " off unless specified :RainbowToogle
+" }}}
+
+" Popular Plugins {{{
+
+" NERDTree {{{
+Plug 'scrooloose/nerdtree'
+nmap <silent> <Leader>, :NERDTreeToggle<CR>
+Plug 'Xuyuanp/nerdtree-git-plugin'
+" }}}
+
+" Airline {{{
 Plug 'vim-airline/vim-airline'    " better status line
+" Tabs and Buffers {{{
 let g:airline#extensions#tabline#enabled=1  " airline themed tabline
-let g:airline#extensions#tabline#show_tab_type=0    " only tabs
-let g:airline#extensions#tabline#show_splits=0
-let g:airline#extensions#tabline#show_buffers=0
+let g:airline#extensions#tabline#show_tab_type=1
+let g:airline#extensions#tabline#show_splits=1
+let g:airline#extensions#tabline#show_buffers=1
 let g:airline#extensions#tabline#tab_nr_type=1  " display index of the tabpage
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_idx_format = {
+      \ '0': '0 ',
+      \ '1': '1 ',
+      \ '2': '2 ',
+      \ '3': '3 ',
+      \ '4': '4 ',
+      \ '5': '5 ',
+      \ '6': '6 ',
+      \ '7': '7 ',
+      \ '8': '8 ',
+      \ '9': '9 '
+      \}
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>h <Plug>AirlineSelectPrevTab
+nmap <leader>l <Plug>AirlineSelectNextTab
+" }}}
+" Appearance {{{
 let g:airline#extensions#tabline#overflow_marker='…'
 let g:airline#extensions#tabline#formatter='unique_tail_improved'   " short filenames in tabline
+let g:airline#extensions#tabline#overflow_marker = '…'
 " let g:airline#extensions#tabline#left_sep = '▌'
 " let g:airline#extensions#tabline#left_alt_sep = '│'
 " let g:airline#extensions#tabline#right_sep = '▐'
 " let g:airline#extensions#tabline#right_alt_sep = '│'
-let g:airline#extensions#tabline#left_sep = '▒'
-let g:airline#extensions#tabline#left_alt_sep = ' '
-let g:airline#extensions#tabline#right_sep = '▒'
-let g:airline#extensions#tabline#right_alt_sep = ' '
-" let g:airline#extensions#tabline#left_sep = ''
-" let g:airline#extensions#tabline#left_alt_sep = ''
-" let g:airline#extensions#tabline#right_sep = ''
-" let g:airline#extensions#tabline#right_alt_sep = ''
+" let g:airline#extensions#tabline#left_sep = '▒'
+" let g:airline#extensions#tabline#left_alt_sep = ' '
+" let g:airline#extensions#tabline#right_sep = '▒'
+" let g:airline#extensions#tabline#right_alt_sep = ' '
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#show_close_button=0    " no one use it
-" let g:airline_mode_map = {
-"   \ '__' : '-',
-"   \ 'n'  : 'N',
-"   \ 'i'  : 'I',
-"   \ 'R'  : 'R',
-"   \ 'c'  : 'C',
-"   \ 'v'  : 'V',
-"   \ 'V'  : 'V-LINE',
-"   \ '' : 'V-BLOCK',
-"   \ 's'  : 'S',
-"   \ 'S'  : 'S',
-"   \ '' : 'S',
-"   \ }
+let g:airline_exclude_preview=1
+let g:airline_mode_map = {
+        \ '__' : '-',
+        \ 'n'  : 'N',
+        \ 'i'  : 'I',
+        \ 'R'  : 'R',
+        \ 'c'  : 'C',
+        \ 'v'  : 'V',
+        \ 'V'  : 'VL',
+        \ '' : 'VB',
+        \ 's'  : 'S',
+        \ 'S'  : 'S',
+        \ '' : 'S',
+        \ }
 " let g:airline_left_sep = '▌'
 " let g:airline_right_sep = '▐'
-let g:airline_left_sep = '▒'
-let g:airline_left_alt_sep = '│'
-let g:airline_right_sep = '▒'
-let g:airline_right_alt_sep = '│'
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-let g:airline#extensions#tabline#alt_sep = 1
+" let g:airline_left_sep = '▒'
+" let g:airline_left_alt_sep = '│'
+" let g:airline_right_sep = '▒'
+" let g:airline_right_alt_sep = '│'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#alt_sep = 0
 let g:airline_detect_iminsert = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+" }}}
+" Theming {{{
 Plug 'vim-airline/vim-airline-themes'
 " let g:airline_theme = 'angr'
 let g:airline_theme = 'onedark'
-" let g:airline_theme = 'molokai'
-" let g:airline_theme = 'one'
+" let g:airline_theme = 'badwolf'
+" let g:airline_theme='powerlineish'
+" Plug 'bling/vim-bufferline'
+" let g:airline#extensions#bufferline#enable=0
+" let g:bufferline_echo=0
 " NOTE: vim-airline-clock causing memory leak!
 " Plug 'enricobacis/vim-airline-clock'
 " let g:airline#extensions#clock#format = '│ %b %d %T'
 " let g:airline#extensions#clock#updatetime = 1000
-Plug 'terryma/vim-smooth-scroll'  " should have better experience using term
-                                    " other than mac ones
-if has('nvim')
-    noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 3, 2)<CR>
-    noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 3, 2)<CR>
-    noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 3, 4)<CR>
-    noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 3, 4)<CR>
-endif
-" Plug 'itchyny/vim-cursorword'
-" Auto-Complete
-if has('nvim')
+" airline decor
+" let g:airline_section_b = '[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]'
+" let g:airline_section_b = '┬┴┤･ω･)ﾉ├┬┴┬┴'
+" let g:airline_section_b = '≈≈≈[,,_,,]:3'
+let g:airline_section_b = ''
+" }}}
+" }}}
+
+" Tmux Integration {{{
+" Plug 'edkolev/tmuxline.vim'
+" let g:airline#extensions#tmuxline#enabled = 0
+" let g:tmuxline_theme='zenburn'
+" let g:tmuxline_status_justify = 'centre'
+" let g:tmuxline_preset = {
+"       \'a'    : '#S',
+"       \'b'    : '#H',
+"       \'c'    : '',
+"       \'win'  : '[#I] #W',
+"       \'cwin' : '[#I] #W',
+"       \'x'    : '',
+"       \'y'    : ['%a', '%b %d', '%R'],
+"       \'z'    : '#W'}
+" let g:tmuxline_separators = {
+"     \ 'left' : '',
+"     \ 'left_alt': '',
+"     \ 'right' : '',
+"     \ 'right_alt' : '',
+"     \ 'space' : ' '}
+Plug 'tmux-plugins/vim-tmux-focus-events'
+" }}}
+
+" }}}
+
+" Fuzzy Finder {{{
+Plug 'Shougo/denite.nvim'
+nmap <silent> <leader>bl :Denite buffer<CR>
+nmap <silent> <leader>f :Denite file/rec<CR>
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" }}}
+
+" Auto-Complete {{{
+if exists("g:gui_oni")
+    " use Oni provided language client
+    " which is LSP-method as well
+else
     " Non-Async Completes
-    " Plug 'Rip-Rip/clang_complete' " C/C++
-    " let g:clang_use_library=1
-    " let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
     " Async Completes
     Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup=1
-    " Plug 'autozimu/LanguageClient-neovim', {
-    "     \ 'branch': 'next',
-    "     \ 'do': 'bash install.sh',
-    "     \ }
-    " " (Optional) Multi-entry selection UI.
-    " Plug 'junegunn/fzf'
-    Plug 'Shougo/denite.nvim'
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+    nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+    set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+    let g:LanguageClient_changeThrottle=v:null
+    let g:LanguageClient_serverCommands = {
+        \ 'c': ['/usr/bin/clangd-6.0'],
+        \ 'cpp': ['/usr/bin/clangd-6.0'],
+        \ 'python': ['pyls'],
+        \ 'javascript': ['flow-language-server', '--stdio'],
+        \ 'javascript.jsx': ['flow-language-server', '--stdio'],
+        \ 'json': ['vscode-json-languageserver', '--stdio'],
+        \ }
+    let g:LanguageClient_autoStart=1
+    let g:LanguageClient_autoStop=1
+    let g:LanguageClient_hoverPreview="Always"
     " C/C++
-    Plug 'Shougo/deoplete-clangx'
+    " Plug 'Shougo/deoplete-clangx'
     Plug 'Shougo/neoinclude.vim'
-    " Plug 'tweekmonster/deoplete-clang2'
-    " let g:deoplete#sources#clang#autofill_neomake=0
     " Python
-    Plug 'zchee/deoplete-jedi'
+    " Plug 'zchee/deoplete-jedi'
     " JavaScript
-    Plug 'wokalski/autocomplete-flow'
+    " Plug 'wokalski/autocomplete-flow'
     " Emoji
     Plug 'fszymanski/deoplete-emoji'
 endif
-" airline decor
-" let g:airline_section_b = '[̲̅$̲̅(̲̅ιοο̲̅)̲̅$̲̅]'
-let g:airline_section_b = '┬┴┤･ω･)ﾉ├┬┴┬┴'
-" let g:airline_section_b = '≈≈≈[,,_,,]:3'
+" }}}
+
+" Safe Session
+Plug 'tpope/vim-obsession'
 
 call plug#end()
 filetype plugin indent on
+
+" }}}
 
 
 augroup backup_strategies
@@ -170,27 +293,20 @@ endif
 
 let skip_defaults_vim=1
 
-
-" My configs
-
 set background=dark
-" mycolorscheme
-" colorscheme mycolorscheme
 colorscheme onedark
-" colorscheme molokai
-" colorscheme one
-" colorscheme atom-dark-256
 
-" more convenient <Leader> key
-let mapleader="\ "
+set title
+
 " list chars - no more TAB and nbsp issues!
-set listchars=tab:»-,trail:·
+set listchars=tab:»-,trail:·,extends:❯,precedes:❮
 set list
 " vertical split char
-set fillchars+=vert:\│
-
-" Window Display Styles
-filetype plugin indent on
+set fillchars+=vert:\│,fold:~,diff:⣿
+set lazyredraw
+set wrap
+set breakindent
+set showbreak=↪
 
 " more highlight on Todo labels
 augroup highlight_todos
@@ -206,51 +322,34 @@ set colorcolumn=80      " Very Pythonic
 set cursorline
 " set colorcolumn
 
-set foldmethod=syntax   " code folding: deal with loooooong code blocks
+set foldmethod=marker   " code folding: deal with loooooong code blocks
 set foldnestmax=2       " too many numbers on left would be a bother
 set foldlevel=5         " show all code on start-up
-set foldcolumn=4        " show fold open/close: enough for me, I only use one
-" general short-hand for folding bracket-closed blocks
-" nnoremap <Leader>z vf{%zf
-" jump to first line of the previous fold
-" nnoremap zk 2zkzj
+set foldcolumn=5        " show fold open/close: enough for me, I only use one
+set foldlevelstart=0
 
+set hidden
 
 " Status Bar
-set ruler               " cursor pos
-set noshowmode          " already have vim-airline
-set showcmd             " show command
-set laststatus=2        " always show statusline, otherwise only when in split
-set showtabline=2
+if exists("g:gui_oni")
+    set noruler
+    set laststatus=0
+    set showtabline=0
+else                    " in terminal vim
+    set ruler           " cursor pos
+    set noshowmode      " already have vim-airline
+    set showcmd         " show command
+    set laststatus=2
+    set showtabline=2
+endif
 
 " Movement
-set scrolloff=5 " lines under / above cursor-line
+set scrolloff=5     " lines under / above cursor-line
 set mouse=a
-" scroll faster!
-nnoremap <silent> <C-e> <C-e>:sleep 4m<CR><C-e>:sleep 4m<CR><C-e>
-nnoremap <silent> <C-y> <C-y>:sleep 4m<CR><C-y>:sleep 4m<CR><C-y>
 
 " Split Windows
 set splitbelow
 set splitright
-" simpler surfing through splits
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-l> <C-w>l
-" simpler surfing through tabs
-nnoremap <Leader>1 1gt
-nnoremap <Leader>2 2gt
-nnoremap <Leader>3 3gt
-nnoremap <Leader>4 4gt
-nnoremap <Leader>5 5gt
-nnoremap <Leader>6 6gt
-nnoremap <Leader>7 7gt
-nnoremap <Leader>8 8gt
-" tabmoves - right and left
-nnoremap <Leader>>> :+tabmove<CR>
-nnoremap <Leader><< :-tabmove<CR>
-
 
 " Editing
 " Indentation
@@ -258,8 +357,8 @@ set smartindent
 set autoindent
 
 " TABs
-set tabstop=4
-set softtabstop=0 expandtab
+set tabstop=8
+set softtabstop=4 expandtab
 set shiftwidth=4
 set smarttab
 " keep selected after shifting
@@ -295,7 +394,7 @@ set previewheight=2     " preview-window to display args for completed functons
 
 " Copy / Paste
 " set clipboard=unnamed
-vnoremap y "+y
+" vnoremap y "+y
 
 " Misc
 " set matchpairs+=<:>
@@ -305,7 +404,7 @@ vnoremap y "+y
 " Netrw tweaks
 let g:netrw_banner=0    " disable help banner
 let g:netrw_winsize=25
-let g:netrw_browse_split=4
+" let g:netrw_browse_split=4
 let g:netrw_altv=1
 let g:netrw_liststyle=3
 
@@ -321,14 +420,6 @@ set confirm     " confirm before :q etc.
 " Neovim Settings
 if has("nvim")
     tnoremap <Esc> <C-\><C-n>
-    " tnoremap <Leader>1 <C-\><C-n>1gt
-    " tnoremap <Leader>2 <C-\><C-n>2gt
-    " tnoremap <Leader>3 <C-\><C-n>3gt
-    " tnoremap <Leader>4 <C-\><C-n>4gt
-    " tnoremap <Leader>5 <C-\><C-n>5gt
-    " tnoremap <Leader>6 <C-\><C-n>6gt
-    " tnoremap <Leader>7 <C-\><C-n>7gt
-    " tnoremap <Leader>8 <C-\><C-n>8gt
     " fast open terminal below
     nnoremap <silent> <C-\> :split<CR>:term<CR>:resize 30<CR>a
 endif
@@ -359,7 +450,7 @@ augroup filetype_specifics
     autocmd FileType javascript*    setlocal makeprg=npm\ start
     autocmd FileType json   setlocal sw=2 cc=120
     autocmd FileType css    setlocal sw=2
-    autocmd FileType python setlocal sw=4 foldmethod=indent
+    autocmd FileType python setlocal sw=4
     " don't jump to first col when inserting inline comments
     autocmd FileType python inoremap # X<c-h>#
     autocmd BufEnter *.wxml setlocal filetype=xml sw=2 cc=120
