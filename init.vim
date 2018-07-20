@@ -20,6 +20,7 @@ let mapleader="\ "
 " }}}
 
 " Plugins {{{
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 let g:python3_host_prog = '/home/smdsbz/.config/nvim/neovim3/bin/python3'
@@ -59,6 +60,7 @@ let g:python_highlight_space_errors=0
 " Plug 'itchyny/vim-cursorword'
 Plug 'luochen1990/rainbow'        " just admit it, everyone needs this :)
 let g:rainbow_active = 0          " off unless specified :RainbowToogle
+nnoremap <silent> <Leader>tr :RainbowToggle<CR>
 Plug 'lfv89/vim-interestingwords'
 let g:interestingWordsRandomiseColors = 1
 " }}}
@@ -78,8 +80,10 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 3, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 3, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 3, 4)<CR>
 
-nnoremap <silent> <C-e> <C-e>:sleep 4m<CR><C-e>:sleep 4m<CR><C-e>
-nnoremap <silent> <C-y> <C-y>:sleep 4m<CR><C-y>:sleep 4m<CR><C-y>
+" nnoremap <silent> <C-e> :call smooth_scroll#down(4, 1, 1)<CR>
+" nnoremap <silent> <C-y> :call smooth_scroll#up(4, 1, 1)<CR>
+nnoremap <silent> <C-e> <C-e>:redraw<CR>:sleep 1m<CR><C-e>:redraw<CR>:sleep 1m<CR><C-e>:redraw<CR>:sleep 1m<CR><C-e>:redraw<CR>:sleep 1m<CR>
+nnoremap <silent> <C-y> <C-y>:redraw<CR>:sleep 1m<CR><C-y>:redraw<CR>:sleep 1m<CR><C-y>:redraw<CR>:sleep 1m<CR><C-y>:redraw<CR>:sleep 1m<CR>
 " }}}
 
 " Enhanced Editing {{{
@@ -92,7 +96,7 @@ let g:AutoPairsCenterLine = 0
 
 " NERDTree {{{
 Plug 'scrooloose/nerdtree'
-nmap <silent> <Leader>, :NERDTreeToggle<CR>
+nmap <silent> <Leader>ft :NERDTreeToggle<CR>
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " }}}
 
@@ -198,25 +202,6 @@ let g:airline_section_b = ''
 " }}}
 
 " Tmux Integration {{{
-" Plug 'edkolev/tmuxline.vim'
-" let g:airline#extensions#tmuxline#enabled = 0
-" let g:tmuxline_theme='zenburn'
-" let g:tmuxline_status_justify = 'centre'
-" let g:tmuxline_preset = {
-"       \'a'    : '#S',
-"       \'b'    : '#H',
-"       \'c'    : '',
-"       \'win'  : '[#I] #W',
-"       \'cwin' : '[#I] #W',
-"       \'x'    : '',
-"       \'y'    : ['%a', '%b %d', '%R'],
-"       \'z'    : '#W'}
-" let g:tmuxline_separators = {
-"     \ 'left' : '',
-"     \ 'left_alt': '',
-"     \ 'right' : '',
-"     \ 'right_alt' : '',
-"     \ 'space' : ' '}
 Plug 'tmux-plugins/vim-tmux-focus-events'
 " }}}
 
@@ -224,8 +209,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Fuzzy Finder {{{
 Plug 'Shougo/denite.nvim'
-nmap <silent> <leader>bl :Denite buffer<CR>
-nmap <silent> <leader>f :Denite file/rec<CR>
+nmap <silent> <leader>bb :Denite buffer<CR>
+nmap <silent> <leader>ff :Denite file/rec<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " }}}
@@ -243,7 +228,7 @@ else
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
-    nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <silent> <Leader>mh :call LanguageClient#textDocument_hover()<CR>
     set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
     let g:LanguageClient_changeThrottle=v:null
     let g:LanguageClient_serverCommands = {
@@ -274,6 +259,40 @@ Plug 'tpope/vim-obsession'
 
 call plug#end()
 filetype plugin indent on
+
+" }}}
+
+" Space* Key Bindings {{{
+
+" Files
+nnoremap <silent> <Leader>fs :w<CR>
+" `<Leader>ft` mapped to `:NERDTreeToggle`
+
+" Searches
+nnoremap <silent> <Leader>sc :nohlsearch<CR>
+
+" Windows
+nnoremap <silent> <Leader>wl <C-w>l
+nnoremap <silent> <Leader>wh <C-w>h
+nnoremap <silent> <Leader>wj <C-w>j
+nnoremap <silent> <Leader>wk <C-w>k
+nnoremap <silent> <Leader>wd :close<CR>
+nnoremap <silent> <Leader>wS :split<CR>
+nnoremap <silent> <Leader>wV :vsplit<CR>
+
+" Buffers
+nnoremap <silent> <Leader>bd :bd<CR>
+
+" Language Specifics
+" `<Leader>mh` mapped to function doc
+
+" Toggles
+" `<Leader>tr` mapped to rainbow parenthesis
+nnoremap <silent> <Leader>tnn :set nu!<CR>
+nnoremap <silent> <Leader>tnr :set relativenumber!<CR>
+
+" Misc
+nnoremap <Leader>qq :qa<CR>
 
 " }}}
 
@@ -356,7 +375,7 @@ set splitright
 set smartindent
 set autoindent
 
-" TABs
+" Indentations
 set tabstop=8
 set softtabstop=4 expandtab
 set shiftwidth=4
@@ -374,10 +393,6 @@ set incsearch   " search while typing
 nnoremap <BS> :nohlsearch<CR><C-W>z
 " set showmatch
 " set matchtime=5
-" Visual
-" move to visual border easily
-" vnoremap <Left> <Esc>`<
-" vnoremap <Right> <Esc>`>
 
 if has('nvim')
     set inccommand=nosplit
@@ -389,7 +404,7 @@ set ignorecase  " default ignore case when completing
 set smartcase   " will stop if you type an uppercase
 set wildmode=list:longest,full
 set completeopt=menu,menuone,longest,noselect,preview
-set previewheight=2     " preview-window to display args for completed functons
+set previewheight=5     " preview-window to display args for completed functons
 
 
 " Copy / Paste
@@ -417,7 +432,7 @@ set autowrite   " write when switching buffer
 set confirm     " confirm before :q etc.
 
 
-" Neovim Settings
+" NeoVim Terminal-Mode
 if has("nvim")
     tnoremap <Esc> <C-\><C-n>
     " fast open terminal below
