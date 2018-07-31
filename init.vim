@@ -8,8 +8,8 @@ set nocompatible    " Use Vim defaults instead of 100% vi compatibility
 set backspace=2     " more powerful backspacing
 
 " automatic install vim-plug
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+if empty(glob('~\\AppData\\Local\\nvim-data\\site\\autoload\\plug.vim'))
+  silent !curl -fLo ~\\AppData\\Local\\nvim-data\\site\\autoload\\plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -21,9 +21,9 @@ let mapleader="\ "
 
 " Plugins {{{
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin('~\\AppData\\Local\\nvim-data\\plugged')
 
-let g:python3_host_prog = '/home/smdsbz/.config/nvim/neovim3/bin/python3'
+let g:python3_host_prog = '~\\AppData\\Local\\Programs\\Python\\Python36\\python.exe'
 
 " Terminal 256-color {{{
 if (has("termguicolors"))
@@ -226,7 +226,7 @@ else
     let g:deoplete#enable_at_startup=1
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
-        \ 'do': 'bash install.sh',
+        \ 'do': 'powershell -executionpolicy bypass -File install.ps',
         \ }
     nnoremap <silent> <Leader>mh :call LanguageClient#textDocument_hover()<CR>
     set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
@@ -433,11 +433,11 @@ set confirm     " confirm before :q etc.
 
 
 " NeoVim Terminal-Mode
-if has("nvim")
-    tnoremap <Esc> <C-\><C-n>
-    " fast open terminal below
-    nnoremap <silent> <C-\> :split<CR>:term<CR>:resize 30<CR>a
-endif
+" if has("nvim")
+"     tnoremap <Esc> <C-\><C-n>
+"     " fast open terminal below
+"     nnoremap <silent> <C-\> :split<CR>:term<CR>:resize 30<CR>a
+" endif
 
 
 " Line Number Settings

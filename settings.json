@@ -1,0 +1,113 @@
+{
+    "window.titleBarStyle": "custom",
+    "editor.fontFamily": "'Meslo LG S DZ for Powerline', 'Noto Sans Mono CJK SC', 'Courier New', monospace",
+    "editor.fontSize": 12,
+    "editor.formatOnPaste": true,
+    "editor.renderWhitespace": "none",
+    "editor.cursorBlinking": "smooth",
+    "editor.dragAndDrop": false,
+    "editor.minimap.enabled": false,
+    "editor.minimap.maxColumn": 80,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.showSlider": "always",
+    "editor.smoothScrolling": true,
+    "editor.overviewRulerBorder": false,
+    "editor.overviewRulerLanes": 1,
+    "editor.rulers": [ 80, 120 ],
+    "workbench.editor.showTabs": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.editor.tabCloseButton": "off",
+    "vim.disableExtension": false,
+    "vim.enableNeovim": false,
+    "vim.foldfix": true,
+    "vim.leader": " ",
+    "vim.hlsearch": true,
+    "vim.easymotion": true,
+    "vim.easymotionMarkerFontFamily": "Meslo LG S DZ for Powerline",
+    "vim.easymotionMarkerFontSize": "12",
+    "vim.visualstar": true,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-[": true
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "<bs>" ],
+            "commands": [ ":nohl", "workbench.action.closePanel" ]
+        },
+        {
+            "before": [ "<leader>", "s", "c" ],
+            "commands": [ ":nohl" ]
+        },
+        {
+            "before": [ "<C-e>" ],
+            "after": [ "<C-e>", "<C-e>", "<C-e>", "<C-e>" ]
+        },
+        {
+            "before": [ "<C-y>" ],
+            "after": [ "<C-y>", "<C-y>", "<C-y>", "<C-y>" ]
+        },
+        {
+            "before": [ "<leader>", "f", "s" ],
+            "commands": [ "workbench.action.files.save" ]
+        },
+        {
+            "before": [ "<leader>", "f", "f" ],
+            "commands": [ "workbench.action.quickOpen" ]
+        },
+        {
+            "before": [ "<leader>", "b", "d" ],
+            "commands": [ "workbench.action.closeActiveEditor" ]
+        },
+        {
+            "before": [ "<leader>", "w", "d" ],
+            "commands": [ "workbench.action.closeEditorsInGroup" ]
+        },
+        {
+            "before": [  "<leader>", "w", "V" ],
+            "commands": [ "workbench.action.splitEditorRight" ]
+        },
+        {
+            "before": [  "<leader>", "w", "S" ],
+            "commands": [ "workbench.action.splitEditorDown" ]
+        },
+        {
+            "before": [ "<leader>", "w", "h" ],
+            "commands": [ "workbench.action.focusLeftGroup" ]
+        },
+        {
+            "before": [ "<leader>", "w", "j" ],
+            "commands": [ "workbench.action.focusBelowGroup" ]
+        },
+        {
+            "before": [ "<leader>", "w", "k" ],
+            "commands": [ "workbench.action.focusAboveGroup" ]
+        },
+        {
+            "before": [ "<leader>", "w", "l" ],
+            "commands": [ "workbench.action.focusRightGroup" ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [ ">" ],
+            "commands": [ "editor.action.indentLines" ]
+        },
+        {
+            "before": [ "<" ],
+            "commands": [ "editor.action.outdentLines" ]
+        },
+    ],
+    "window.zoomLevel": 0,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "python.pythonPath": "C:\\Users\\smdsbz\\AppData\\Local\\conda\\conda\\envs\\ml\\python.exe",
+    "window.menuBarVisibility": "toggle",
+    "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
+    "editor.showFoldingControls": "always",
+    "editor.renderLineHighlight": "all",
+    "python.jediEnabled": false,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+    "workbench.sideBar.location": "left",
+}
