@@ -8,8 +8,8 @@ set nocompatible    " Use Vim defaults instead of 100% vi compatibility
 set backspace=2     " more powerful backspacing
 
 " automatic install vim-plug
-if empty(glob('~\\AppData\\Local\\nvim-data\\site\\autoload\\plug.vim'))
-  silent !curl -fLo ~\\AppData\\Local\\nvim-data\\site\\autoload\\plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -21,9 +21,9 @@ let mapleader="\ "
 
 " Plugins {{{
 
-call plug#begin('~\\AppData\\Local\\nvim-data\\plugged')
+call plug#begin('~/.config/nvim/plugged')
 
-let g:python3_host_prog = '~\\AppData\\Local\\Programs\\Python\\Python36\\python.exe'
+let g:python3_host_prog = '/home/smdsbz/.config/nvim/neovimpyenv/bin/python3'
 
 " Terminal 256-color {{{
 if (has("termguicolors"))
@@ -90,6 +90,8 @@ nnoremap <silent> <C-y> <C-y>:redraw<CR>:sleep 1m<CR><C-y>:redraw<CR>:sleep 1m<C
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsCenterLine = 0
+let g:AutoPairsMultilineClose = 0
+Plug 'tpope/vim-surround'
 " }}}
 
 " Popular Plugins {{{
@@ -226,7 +228,7 @@ else
     let g:deoplete#enable_at_startup=1
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
-        \ 'do': 'powershell -executionpolicy bypass -File install.ps',
+        \ 'do': 'bash install.sh',
         \ }
     nnoremap <silent> <Leader>mh :call LanguageClient#textDocument_hover()<CR>
     set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
@@ -284,7 +286,7 @@ nnoremap <silent> <Leader>wV :vsplit<CR>
 nnoremap <silent> <Leader>bd :bd<CR>
 
 " Language Specifics
-" `<Leader>mh` mapped to function doc
+" `<Leader>mh` mapped to LSP-given doc
 
 " Toggles
 " `<Leader>tr` mapped to rainbow parenthesis
