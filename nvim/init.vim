@@ -46,8 +46,7 @@ let ayucolor="dark"
 " }}}
 
 " Syntax Highlighting {{{
-Plug 'sheerun/vim-polyglot'       " one-to-rule-it-all syntax plugin
-Plug 'chrisbra/csv.vim'           " better looking of csv
+Plug 'sheerun/vim-polyglot'         " one-to-rule-it-all syntax plugin
 " from 'ioctol/vim-cpp-enhanced-highlight'
 let g:cpp_class_scope_highlight=1
 let g:cpp_member_variable_highlight=1
@@ -56,10 +55,21 @@ let g:cpp_class_decl_highlight=1
 let g:python_highlight_all=1
 let g:python_version_2=0
 let g:python_highlight_space_errors=0
+Plug 'tmhedberg/SimpylFold'         " Python syntax folding
+let g:SimpylFold_fold_import = 0
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'      " better markdown experience
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_toc_autofit = 1
+set conceallevel=2
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+Plug 'chrisbra/csv.vim'             " better looking of csv
 " Misc
 " Plug 'itchyny/vim-cursorword'
-Plug 'luochen1990/rainbow'        " just admit it, everyone needs this :)
-let g:rainbow_active = 0          " off unless specified :RainbowToogle
+Plug 'luochen1990/rainbow'          " just admit it, everyone needs this :)
+let g:rainbow_active = 0            " off unless specified :RainbowToogle
 nnoremap <silent> <Leader>tr :RainbowToggle<CR>
 Plug 'lfv89/vim-interestingwords'
 let g:interestingWordsRandomiseColors = 1
@@ -68,6 +78,7 @@ let g:interestingWordsRandomiseColors = 1
 " Enhanced Motion {{{
 Plug 'mhinz/vim-startify'
 Plug 'easymotion/vim-easymotion'
+let g:EasyMotion_verbose = 0
 Plug 'kshenoy/vim-signature'
 set signcolumn=yes              " always show column
 Plug 'terryma/vim-multiple-cursors'
@@ -236,7 +247,7 @@ else
     let g:LanguageClient_serverCommands = {
         \ 'c': ['/usr/bin/clangd-6.0'],
         \ 'cpp': ['/usr/bin/clangd-6.0'],
-        \ 'python': ['pyls'],
+        \ 'python': ['/home/smdsbz/.config/nvim/neovimpyenv/bin/pyls'],
         \ 'javascript': ['flow-language-server', '--stdio'],
         \ 'javascript.jsx': ['flow-language-server', '--stdio'],
         \ 'json': ['vscode-json-languageserver', '--stdio'],
@@ -345,9 +356,9 @@ set cursorline
 
 set foldmethod=marker   " code folding: deal with loooooong code blocks
 set foldnestmax=2       " too many numbers on left would be a bother
-set foldlevel=5         " show all code on start-up
+set foldlevelstart=5
+set foldlevel=5
 set foldcolumn=5        " show fold open/close: enough for me, I only use one
-set foldlevelstart=0
 
 set hidden
 
@@ -471,7 +482,7 @@ augroup filetype_specifics
     " don't jump to first col when inserting inline comments
     autocmd FileType python inoremap # X<c-h>#
     autocmd BufEnter *.wxml setlocal filetype=xml sw=2 cc=120
-    autocmd FileType asm    setlocal sw=8 ts=8
+    autocmd FileType asm    setlocal sw=4 ts=8
     autocmd BufEnter *.ASM  setlocal filetype=asm
 augroup END
 
