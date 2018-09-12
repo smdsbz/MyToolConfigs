@@ -36,8 +36,8 @@ Plug 'joshdick/onedark.vim'
 let g:onedark_termcolors=256
 let g:onedark_terminal_italics=1
 Plug 'tomasr/molokai'
-let g:molokai_original=1
-let g:rehash256=1
+" let g:molokai_original=1
+" let g:rehash256=1
 Plug 'sjl/badwolf'
 let g:badwolf_tabline=1
 let g:badwolf_css_props_highlight=1
@@ -327,6 +327,9 @@ let skip_defaults_vim=1
 
 set background=dark
 colorscheme onedark
+" colorscheme ayu
+" colorscheme badwolf
+" colorscheme molokai
 
 set title
 
@@ -334,7 +337,7 @@ set title
 set listchars=tab:»-,trail:·,extends:❯,precedes:❮
 set list
 " vertical split char
-set fillchars+=vert:\│,fold:~,diff:⣿
+set fillchars+=vert:\│,fold:-,diff:⣿
 set lazyredraw
 set wrap
 set breakindent
@@ -479,6 +482,7 @@ augroup filetype_specifics
     autocmd FileType json   setlocal sw=2 cc=120
     autocmd FileType css    setlocal sw=2
     autocmd FileType python setlocal sw=4
+    autocmd FileType python nnoremap <Leader>mb Oimport pdb; pdb.set_trace()<Esc>
     " don't jump to first col when inserting inline comments
     autocmd FileType python inoremap # X<c-h>#
     autocmd BufEnter *.wxml setlocal filetype=xml sw=2 cc=120

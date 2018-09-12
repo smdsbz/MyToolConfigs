@@ -19,6 +19,8 @@ BULLETTRAIN_PROMPT_ORDER=(
   git
   custom
 )
+BULLETTRAIN_STATUS_EXIT_SHOW=true
+BULLETTRAIN_DIR_EXTENDED=0
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -32,7 +34,7 @@ BULLETTRAIN_PROMPT_ORDER=(
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -70,7 +72,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  nyan
+  # nyan
   git
   zsh-autosuggestions
   zsh-completions
@@ -108,9 +110,24 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias sl="sl -ae"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/smdsbz/.mujoco/mjpro150/bin
-export PATH=$PATH:/home/smdsbz/.cargo/bin
+# PATH Settings
+export PATH=$PATH:~/.local/bin
+export PATH=$PATH:~/anaconda3/bin
+export PATH=$PATH:~/.cargo/bin
+
+# Python VirtualenvWrapper Settings
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper_lazy.sh
+
+# CUDA Settings
+export PATH=$PATH:/usr/local/cuda/bin
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 
