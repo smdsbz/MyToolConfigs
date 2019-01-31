@@ -26,8 +26,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 4
-    y: 4
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: true
@@ -40,7 +40,7 @@ window:
   decorations: full
 
   # When true, alacritty starts maximized.
-  start_maximized: false
+  start_maximized: true
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -109,7 +109,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 7.0
+  size: 7.5
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -136,6 +136,8 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Default colors
   primary:
+    # background: '0x121212'
+    # foreground: '0xeff0f1'
     background: '0x121212'
     foreground: '0xeff0f1'
 
@@ -222,7 +224,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.94
+background_opacity: 1.0
 
 # Mouse bindings
 #
@@ -438,7 +440,7 @@ key_bindings:
   - { key: F8,                      chars: "\x1b[19~"                    }
   - { key: F9,                      chars: "\x1b[20~"                    }
   - { key: F10,                     chars: "\x1b[21~"                    }
-  - { key: F11,                     chars: "\x1b[23~"                    }
+  - { key: F11, command: { program: "wmctrl", args: [ "-r", ":ACTIVE:", "-b", "toggle,fullscreen" ] } }
   - { key: F12,                     chars: "\x1b[24~"                    }
   - { key: F1,       mods: Shift,   chars: "\x1b[1;2P"                   }
   - { key: F2,       mods: Shift,   chars: "\x1b[1;2Q"                   }
