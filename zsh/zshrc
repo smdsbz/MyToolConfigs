@@ -8,19 +8,7 @@
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="tjkirch"
-# ZSH_THEME="ys"
-ZSH_THEME="bullet-train"
-BULLETTRAIN_PROMPT_ORDER=(
-  status
-  context
-  time
-  dir
-  virtualenv
-  git
-  custom
-)
-BULLETTRAIN_STATUS_EXIT_SHOW=true
-BULLETTRAIN_DIR_EXTENDED=0
+ZSH_THEME="ys"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -116,18 +104,4 @@ alias sl="sl -ae"
 
 # PATH Settings
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:~/anaconda3/bin
-export PATH=$PATH:~/.cargo/bin
-
-# Python VirtualenvWrapper Settings
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_SCRIPT=~/.local/bin/virtualenvwrapper.sh
-source ~/.local/bin/virtualenvwrapper_lazy.sh
-
-# CUDA Settings
-export PATH=$PATH:/usr/local/cuda/bin
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda/extras/CUPTI/lib64
 

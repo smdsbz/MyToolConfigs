@@ -15,7 +15,7 @@ set previewheight=5
 
 " Theme
 set background=dark
-colorscheme default
+colorscheme elflord
 let g:netrw_banner=0
 let g:netrw_liststyle=3
 set ruler
@@ -77,7 +77,9 @@ set foldcolumn=5
 
 
 " Space*** Key-Bindings
+nnoremap <Leader>qq :qa<CR>
 nnoremap <Leader>fs :w<CR>
+nnoremap <Leader>bd :bd<CR>
 nnoremap <Leader>wV :vsp<CR>
 nnoremap <Leader>wS :sp<CR>
 nnoremap <Leader>wd :close<CR>
@@ -97,5 +99,6 @@ vnoremap S( <Esc>`>a<Space>)<Esc>`<i(<Space><Esc>h
 " vnoremap gc <Esc>I<Space><Backspace>#<Space><Esc>h
 
 " Hack Fixes
+" Python inline comment
 inoremap # <Space><Backspace>#
 
