@@ -100,5 +100,5 @@ vnoremap S( <Esc>`>a<Space>)<Esc>`<i(<Space><Esc>h
 
 " Hack Fixes
 " Python inline comment
-inoremap # <Space><Backspace>#
+inoremap # X#
 
