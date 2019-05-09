@@ -23,7 +23,7 @@ let mapleader="\ "
 
 call plug#begin('~/.config/nvim/plugged')
 
-let g:python3_host_prog = '/home/smdsbz/.config/nvim/neovimpyenv/bin/python3'
+let g:python3_host_prog = '~/.config/nvim/neovimpyenv/bin/python3'
 
 " Terminal 256-color {{{
 if (has("termguicolors"))
