@@ -14,7 +14,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" more convenient <Leader> key
+" more convenient <leader> key
 let mapleader="\ "
 
 " }}}
@@ -23,7 +23,7 @@ let mapleader="\ "
 
 call plug#begin('~/.config/nvim/plugged')
 
-let g:python3_host_prog = '~/.config/nvim/neovimpyenv/bin/python3'
+" let g:python3_host_prog = '~/.config/nvim/neovimpyenv/bin/python3'
 
 " Terminal 256-color {{{
 if (has("termguicolors"))
@@ -56,7 +56,7 @@ let g:python_highlight_all=1
 let g:python_version_2=0
 let g:python_highlight_space_errors=0
 Plug 'tmhedberg/SimpylFold'         " Python syntax folding
-let g:SimpylFold_fold_import = 0
+let g:SimpylFold_fold_import = 1
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'      " better markdown experience
 let g:vim_markdown_folding_style_pythonic = 1
@@ -70,7 +70,6 @@ Plug 'chrisbra/csv.vim'             " better looking of csv
 " Plug 'itchyny/vim-cursorword'
 Plug 'luochen1990/rainbow'          " just admit it, everyone needs this :)
 let g:rainbow_active = 0            " off unless specified :RainbowToogle
-nnoremap <silent> <Leader>tr :RainbowToggle<CR>
 Plug 'lfv89/vim-interestingwords'
 let g:interestingWordsRandomiseColors = 1
 " }}}
@@ -86,15 +85,13 @@ let g:multi_cursor_exit_from_visual_mode=1
 let g:multi_cursor_exit_from_insert_mode=0
 Plug 'terryma/vim-smooth-scroll'    " should have better experience using term
                                     " other than mac ones
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 3, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 3, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 3, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 3, 4)<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 3, 2)<cr>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 3, 2)<cr>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 3, 4)<cr>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 3, 4)<cr>
 
-" nnoremap <silent> <C-e> :call smooth_scroll#down(4, 1, 1)<CR>
-" nnoremap <silent> <C-y> :call smooth_scroll#up(4, 1, 1)<CR>
-nnoremap <silent> <C-e> <C-e>:redraw<CR>:sleep 1m<CR><C-e>:redraw<CR>:sleep 1m<CR><C-e>:redraw<CR>:sleep 1m<CR><C-e>:redraw<CR>:sleep 1m<CR>
-nnoremap <silent> <C-y> <C-y>:redraw<CR>:sleep 1m<CR><C-y>:redraw<CR>:sleep 1m<CR><C-y>:redraw<CR>:sleep 1m<CR><C-y>:redraw<CR>:sleep 1m<CR>
+nnoremap <silent> <c-e> <c-e>:redraw<cr>:sleep 1m<cr><c-e>:redraw<cr>:sleep 1m<cr><c-e>:redraw<cr>:sleep 1m<cr><c-e>:redraw<cr>:sleep 1m<cr>
+nnoremap <silent> <c-y> <c-y>:redraw<cr>:sleep 1m<cr><c-y>:redraw<cr>:sleep 1m<cr><c-y>:redraw<cr>:sleep 1m<cr><c-y>:redraw<cr>:sleep 1m<cr>
 " }}}
 
 " Enhanced Editing {{{
@@ -109,7 +106,6 @@ Plug 'tpope/vim-surround'
 
 " NERDTree {{{
 Plug 'scrooloose/nerdtree'
-nmap <silent> <Leader>ft :NERDTreeToggle<CR>
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " }}}
 
@@ -148,21 +144,22 @@ nmap <leader>h <Plug>AirlineSelectPrevTab
 nmap <leader>l <Plug>AirlineSelectNextTab
 " }}}
 " Appearance {{{
-let g:airline#extensions#tabline#overflow_marker='…'
 let g:airline#extensions#tabline#formatter='unique_tail_improved'   " short filenames in tabline
 let g:airline#extensions#tabline#overflow_marker = '…'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#right_sep = ' '
 " let g:airline#extensions#tabline#left_sep = '▌'
-" let g:airline#extensions#tabline#left_alt_sep = '│'
+let g:airline#extensions#tabline#left_alt_sep = '│'
 " let g:airline#extensions#tabline#right_sep = '▐'
-" let g:airline#extensions#tabline#right_alt_sep = '│'
+let g:airline#extensions#tabline#right_alt_sep = '│'
 " let g:airline#extensions#tabline#left_sep = '▒'
 " let g:airline#extensions#tabline#left_alt_sep = ' '
 " let g:airline#extensions#tabline#right_sep = '▒'
 " let g:airline#extensions#tabline#right_alt_sep = ' '
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
+" let g:airline#extensions#tabline#left_sep = ''
+" let g:airline#extensions#tabline#left_alt_sep = ''
+" let g:airline#extensions#tabline#right_sep = ''
+" let g:airline#extensions#tabline#right_alt_sep = ''
 let g:airline#extensions#tabline#show_close_button=0    " no one use it
 let g:airline_exclude_preview=1
 let g:airline_mode_map = {
@@ -178,16 +175,18 @@ let g:airline_mode_map = {
         \ 'S'  : 'S',
         \ '' : 'S',
         \ }
+let g:airline_left_sep = ' '
+let g:airline_right_sep = ' '
 " let g:airline_left_sep = '▌'
 " let g:airline_right_sep = '▐'
 " let g:airline_left_sep = '▒'
-" let g:airline_left_alt_sep = '│'
+let g:airline_left_alt_sep = '│'
 " let g:airline_right_sep = '▒'
-" let g:airline_right_alt_sep = '│'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_right_alt_sep = '│'
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
 let g:airline#extensions#tabline#alt_sep = 0
 let g:airline_detect_iminsert = 1
 let g:airline_skip_empty_sections = 1
@@ -197,6 +196,7 @@ let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 Plug 'vim-airline/vim-airline-themes'
 " let g:airline_theme = 'angr'
 let g:airline_theme = 'onedark'
+" let g:airline_theme = 'molokai'
 " let g:airline_theme = 'badwolf'
 " let g:airline_theme='powerlineish'
 " Plug 'bling/vim-bufferline'
@@ -222,48 +222,55 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Fuzzy Finder {{{
 Plug 'Shougo/denite.nvim'
-nmap <silent> <leader>bb :Denite buffer<CR>
-nmap <silent> <leader>ff :Denite file/rec<CR>
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+    \ denite#do_map('do_action', 'open')
+    nnoremap <silent><buffer><expr> d
+    \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p
+    \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+    \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+    \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+    \ denite#do_map('toggle_select').'j'
+endfunction
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " }}}
 
 " Auto-Complete {{{
 if exists("g:gui_oni")
-    " use Oni provided language client
+    " use Oni provided language client completion framework
     " which is LSP-method as well
 else
-    " Non-Async Completes
-    " Async Completes
     Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup=1
     Plug 'autozimu/LanguageClient-neovim', {
         \ 'branch': 'next',
         \ 'do': 'bash install.sh',
         \ }
-    nnoremap <silent> <Leader>mh :call LanguageClient#textDocument_hover()<CR>
     set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
     let g:LanguageClient_changeThrottle=v:null
     let g:LanguageClient_serverCommands = {
-        \ 'c': ['/usr/bin/clangd-6.0'],
-        \ 'cpp': ['/usr/bin/clangd-6.0'],
-        \ 'python': ['/home/smdsbz/.config/nvim/neovimpyenv/bin/pyls'],
-        \ 'javascript': ['flow-language-server', '--stdio'],
-        \ 'javascript.jsx': ['flow-language-server', '--stdio'],
-        \ 'json': ['vscode-json-languageserver', '--stdio'],
+        \ 'c': ['clangd'],
+        \ 'cpp': ['clangd'],
+        \ 'python': ['pyls'],
         \ }
     let g:LanguageClient_autoStart=1
     let g:LanguageClient_autoStop=1
     let g:LanguageClient_hoverPreview="Always"
-    " C/C++
-    " Plug 'Shougo/deoplete-clangx'
+    let g:LanguageClient_useFloatingHover=0
+    let g:LanguageClient_useVirtualText=0
+    " Other non-LSP backends
     Plug 'Shougo/neoinclude.vim'
-    " Python
-    " Plug 'zchee/deoplete-jedi'
-    " JavaScript
-    " Plug 'wokalski/autocomplete-flow'
-    " Emoji
     Plug 'fszymanski/deoplete-emoji'
+    " Handy utils
+    Plug 'Shougo/echodoc.vim'
+    let g:echodoc#enable_at_startup = 1
+    let g:echodoc#type = 'virtual'
 endif
 " }}}
 
@@ -276,39 +283,39 @@ filetype plugin indent on
 " }}}
 
 " Space* Key Bindings {{{
-
-" Files
-nnoremap <silent> <Leader>fs :w<CR>
-" `<Leader>ft` mapped to `:NERDTreeToggle`
-
-" Searches
-nnoremap <silent> <Leader>sc :nohlsearch<CR>
-
-" Windows
-nnoremap <silent> <Leader>wl <C-w>l
-nnoremap <silent> <Leader>wh <C-w>h
-nnoremap <silent> <Leader>wj <C-w>j
-nnoremap <silent> <Leader>wk <C-w>k
-nnoremap <silent> <Leader>wd :close<CR>
-nnoremap <silent> <Leader>wS :split<CR>
-nnoremap <silent> <Leader>wV :vsplit<CR>
-
-" Buffers
-nnoremap <silent> <Leader>bd :bd<CR>
-
-" Language Specifics
-" `<Leader>mh` mapped to LSP-given doc
-
+" File
+nnoremap <silent> <leader>fs :w<cr>
+nnoremap <silent> <leader>ft :NERDTreeToggle<cr>
+nnoremap <silent> <leader>ff :Denite file/rec<cr>i
+" Buffer
+nnoremap <silent> <leader>bd :bd<cr>
+nnoremap <silent> <leader>bb :Denite buffer<cr>i
+" Search
+nnoremap <silent> <leader>sc :nohlsearch<cr>
+" Window
+nnoremap <silent> <leader>wl <c-w>l
+nnoremap <silent> <leader>wh <c-w>h
+nnoremap <silent> <leader>wj <c-w>j
+nnoremap <silent> <leader>wk <c-w>k
+nnoremap <silent> <leader>wd :close<cr>
+nnoremap <silent> <leader>wS :split<cr>
+nnoremap <silent> <leader>wV :vsplit<cr>
+" LSP Powered
+nnoremap <silent> <leader>mh :call LanguageClient#textDocument_hover()<cr>
+nnoremap <silent> <leader>md :call LanguageClient#textDocument_definition()<cr>
+nnoremap <silent> <leader>ml :call LanguageClient#textDocument_documentSymbol()<cr>
+nnoremap <silent> <leader>mr :call LanguageClient#textDocument_references()<cr>
+nnoremap <silent> <leader>mH :call LanguageClient#clearDocumentHighlight()<cr>
+nnoremap <silent> <leader>mm :call LanguageClient_contextMenu()<cr>
 " Toggles
-" `<Leader>tr` mapped to rainbow parenthesis
-nnoremap <silent> <Leader>tnn :set nu!<CR>
-nnoremap <silent> <Leader>tnr :set relativenumber!<CR>
-
+nnoremap <silent> <leader>tr :RainbowToggle<cr>
+nnoremap <silent> <leader>tnn :set nu!<cr>
+nnoremap <silent> <leader>tnr :set relativenumber!<cr>
+" Toggle
+nnoremap <silent> <leader>tw :call InterestingWords('n')<cr>
 " Misc
-nnoremap <Leader>qq :qa<CR>
-
+nnoremap <leader>qq :qa<cr>
 " }}}
-
 
 augroup backup_strategies
     au!
@@ -406,7 +413,7 @@ set hlsearch    " search highlight
 nohlsearch      " don't show on every :source
 set incsearch   " search while typing
 " <BS> to clear view - nohl and close preview panel
-nnoremap <BS> :nohlsearch<CR><C-W>z
+nnoremap <silent> <BS> :nohlsearch<cr><c-W>z
 " set showmatch
 " set matchtime=5
 
@@ -450,9 +457,9 @@ set confirm     " confirm before :q etc.
 
 " NeoVim Terminal-Mode
 " if has("nvim")
-"     tnoremap <Esc> <C-\><C-n>
+"     tnoremap <esc> <c-\><c-n>
 "     " fast open terminal below
-"     nnoremap <silent> <C-\> :split<CR>:term<CR>:resize 30<CR>a
+"     nnoremap <silent> <c-\> :split<cr>:term<cr>:resize 30<cr>a
 " endif
 
 
@@ -466,15 +473,15 @@ set confirm     " confirm before :q etc.
 " Personal Code Style Preferences
 augroup filetype_specifics
     autocmd!
-    autocmd FileType markdown nnoremap <buffer> <C-q> :!typora % &<CR><CR>
+    autocmd FileType markdown nnoremap <buffer> <c-q> :!typora % &<cr><cr>
     autocmd FileType markdown setlocal cc=120
-    " C - case {<CR> indentation fixup
+    " C - case {<cr> indentation fixup
     autocmd FileType c      setlocal cindent cinoptions=l1
-    autocmd FileType c      setlocal sw=2
+    autocmd FileType c      setlocal sw=4
     autocmd FileType c      setlocal makeprg=make
     " C++ - same as above
     autocmd FileType cpp    setlocal cindent cinoptions=l1
-    autocmd FileType cpp    setlocal sw=2
+    autocmd FileType cpp    setlocal sw=4
     autocmd FileType cpp    setlocal makeprg=make
     autocmd FileType html*  setlocal sw=2 cc=120
     autocmd FileType javascript*    setlocal sw=2
@@ -482,7 +489,7 @@ augroup filetype_specifics
     autocmd FileType json   setlocal sw=2 cc=120
     autocmd FileType css    setlocal sw=2
     autocmd FileType python setlocal sw=4
-    autocmd FileType python nnoremap <Leader>mb Oimport pdb; pdb.set_trace()<Esc>
+    autocmd FileType python nnoremap <leader>mb Oimport pdb; pdb.set_trace()<esc>
     " don't jump to first col when inserting inline comments
     autocmd FileType python inoremap # X<c-h>#
     autocmd BufEnter *.wxml setlocal filetype=xml sw=2 cc=120
