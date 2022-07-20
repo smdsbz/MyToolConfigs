@@ -1,51 +1,209 @@
 {
+    "settingsSync.ignoredSettings": [
+        "python.pythonPath",
+        "remote.SSH.remotePlatform"
+    ],
+
+    "remote.SSH.defaultExtensions": [
+        "chrislajoie.vscode-modelines"
+    ],
+
     "window.titleBarStyle": "custom",
-    "window.menuBarVisibility": "hidden",
-    "editor.fontFamily": "'Meslo LG S DZ for Powerline', 'Noto Sans Mono CJK SC', 'Courier New', monospace",
+    "window.experimental.windowControlsOverlay.enabled": true,
+    "window.restoreWindows": "none",
+
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "explorer.autoReveal": false,
+
+    "remote.autoForwardPorts": false,
+    "breadcrumbs.symbolSortOrder": "name",
+    "outline.showVariables": false,
+    "outline.showProperties": false,
+    "window.title": "${dirty}${rootName}",
+
+    "editor.fontFamily": "'Fira Code Retina', 'PingFang SC', 'Microsoft YaHei', 'Segoe UI Emoji', monospace",
+    // "editor.fontFamily": "'Meslo LG S DZ for Powerline', 'PingFang SC', 'Microsoft YaHei', 'Segoe UI Emoji', monospace",
     "editor.fontSize": 12,
-    "editor.tabSize": 4,
+    "editor.lineHeight": 0,
+    // "editor.fontFamily": "'Ubuntu Mono derivative Powerline', 'Segoe UI Emoji', monospace",
+    // "editor.fontSize": 13.5,
+    // "editor.lineHeight": 1.2,
+    "editor.fontLigatures": false,
+    "debug.console.fontSize": 12,
+    "editor.detectIndentation": true,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 8,
+    "editor.stickyTabStops": true,
     "editor.formatOnPaste": true,
-    "editor.renderWhitespace": "none",
-    "editor.cursorBlinking": "phase",
+    "editor.cursorBlinking": "solid",
+    "editor.cursorSmoothCaretAnimation": false,
+    "editor.smoothScrolling": false,
+    "editor.scrollbar.horizontal": "visible",
+    "editor.scrollbar.horizontalScrollbarSize": 3,
+    "editor.scrollbar.vertical": "visible",
+    "editor.scrollbar.verticalScrollbarSize": 7,
     "editor.dragAndDrop": false,
+    "editor.roundedSelection": false,
     "editor.minimap.enabled": false,
     "editor.minimap.maxColumn": 80,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.showSlider": "always",
-    "editor.smoothScrolling": true,
-    "editor.lineNumbers": "on",
-    "editor.overviewRulerBorder": false,
-    "editor.overviewRulerLanes": 1,
-    "editor.rulers": [ 79, 119 ],
-    "editor.wordWrap": "on",
+    "editor.minimap.size": "fit",
+    "editor.lineNumbers": "off",
+    "editor.rulers": [ 80, 120 ],
+    "editor.wordWrap": "off",
     "editor.wrappingIndent": "deepIndent",
-    "editor.showFoldingControls": "mouseover",
-    "editor.renderLineHighlight": "all",
-    "editor.occurrencesHighlight": false,
+    "editor.occurrencesHighlight": true,
+    "editor.selectionHighlight": true,
+    "editor.guides.indentation": false,
+    "editor.guides.bracketPairs": true,
+    "editor.guides.bracketPairsHorizontal": false,
+    "editor.bracketPairColorization.enabled": false,
+    "editor.guides.highlightActiveIndentation": true,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "editor.acceptSuggestionOnEnter": "off",
     "editor.snippetSuggestions": "none",
-    "workbench.editor.showTabs": true,
-    "workbench.editor.tabSizing": "shrink",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.suggestSelection": "first",
+    "editor.renderControlCharacters": true,
+    "editor.overviewRulerBorder": false,
+    "editor.renderLineHighlight": "gutter",
+    "editor.renderWhitespace": "trailing",
+    "editor.hover.above": true,
+    "editor.suggest.preview": false,
+    "editor.suggest.filterGraceful": true,
+    "editor.suggest.insertMode": "insert",
+    "editor.suggest.localityBonus": true,
+    "editor.suggest.showSnippets": false,
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    "editor.suggest.shareSuggestSelections": true,
+    "editor.cursorSurroundingLines": 3,
+    "editor.cursorSurroundingLinesStyle": "all",
+    "editor.definitionLinkOpensInPeek": true,
+    "workbench.editor.decorations.badges": false,
+    "workbench.editor.decorations.colors": false,
+    "workbench.editor.navigationScope": "editor",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+
+    "[typescript][javascript]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[html][css]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "[shellscript]": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8,
+        "editor.guides.bracketPairs": false,
+        "editor.guides.indentation": true
+    },
+    "[c]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 8
+    },
+    "[cpp][go][proto]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[python]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.guides.bracketPairs": false,
+        "editor.guides.indentation": true
+    },
+    "[cmake]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[markdown]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+
+    "files.hotExit": "off",
+    "files.autoSave": "off",
+    "workbench.editor.tabSizing": "fit",
     "workbench.editor.tabCloseButton": "off",
-    "workbench.activityBar.visible": false,
+    "workbench.editor.limit.enabled": true,
+    "workbench.editor.limit.perEditorGroup": true,
+    "workbench.editor.limit.value": 10,
+    "workbench.sideBar.location": "left",
+    "workbench.panel.opensMaximized": "preserve",
+
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.fontSize": 12,
+    "terminal.integrated.fontWeightBold": "900",
+    "terminal.integrated.enablePersistentSessions": true,
+    "terminal.integrated.localEchoLatencyThreshold": 0,
+    "terminal.integrated.localEchoExcludePrograms": [
+        "vim",
+        "vi",
+        "nano",
+        "tmux",
+        "less",
+        "man",
+    ],
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "Cygwin": {
+            "path": "C:\\cygwin64\\bin\\bash.exe",
+            "args": []
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Cygwin",
+    "terminal.integrated.scrollback": 5000,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "debug.internalConsoleOptions": "openOnSessionStart",
+    "debug.showBreakpointsInOverviewRuler": true,
+
     "vim.disableExtension": false,
     "vim.enableNeovim": false,
     "vim.foldfix": true,
-    "vim.leader": " ",
+    "vim.leader": "<space>",
     "vim.hlsearch": true,
+    "vim.searchHighlightColor": "#770",
+    "vim.showcmd": true,
+    "vim.startofline": false,
+    "vim.report": 1,
     "vim.easymotion": true,
-    "vim.easymotionMarkerFontFamily": "Meslo LG S DZ for Powerline",
-    "vim.easymotionMarkerFontSize": "12",
+    "vim.easymotionMarkerBackgroundColor": "#000",
+    "vim.easymotionMarkerForegroundColorOneChar": "#f00",
+    "vim.easymotionDimBackground": true,
     "vim.visualstar": true,
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.duration": 300,
+    "vim.showMarksInGutter": true,
     "vim.handleKeys": {
+        "<C-w>": true,
         "<C-d>": true,
-        "<C-[": true
+        "<C-[>": true,
     },
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [ "<bs>" ],
-            "commands": [ ":nohl", "workbench.action.closePanel" ]
+            "commands": [
+                ":nohl",
+                "workbench.action.closePanel",
+                "notifications.clearAll"
+            ]
         },
         {
             "before": [ "<leader>", "s", "c" ],
@@ -53,11 +211,27 @@
         },
         {
             "before": [ "<C-e>" ],
-            "after": [ "<C-e>", "<C-e>", "<C-e>", "<C-e>" ]
+            "after": [ "3", "<C-e>" ]
         },
         {
             "before": [ "<C-y>" ],
-            "after": [ "<C-y>", "<C-y>", "<C-y>", "<C-y>" ]
+            "after": [ "3", "<C-y>" ]
+        },
+        {
+            "before": [ "<C-j>" ],
+            "commands": [ "workbench.action.togglePanel" ]
+        },
+        {
+            "before": [ "z", "j" ],
+            "commands": [ "editor.gotoNextFold" ]
+        },
+        {
+            "before": [ "z", "k" ],
+            "commands": [ "editor.gotoPreviousFold" ]
+        },
+        {
+            "before": [ "<leader>", "<leader>", "<leader>" ],
+            "commands": [ "workbench.action.showCommands" ]
         },
         {
             "before": [ "<leader>", "l" ],
@@ -76,8 +250,53 @@
             "commands": [ "workbench.action.quickOpen" ]
         },
         {
+            "before": [ "<leader>", "f", "t" ],
+            "commands": [ "workbench.action.toggleSidebarVisibility" ]
+        },
+        {
+            "before": [ "<leader>", "t", "t" ],
+            "commands": [ "workbench.action.toggleTabsVisibility" ]
+        },
+        {
+            "before": [ "<leader>", "b", "b" ],
+            // "commands": [ "workbench.action.showEditorsInActiveGroup" ]
+            "commands": [ "workbench.action.showEditorsInGroup" ]
+        },
+        {
+            "before": [ "<leader>", "b", "k" ],
+            "commands": [ "workbench.action.keepEditor" ]
+        },
+        {
             "before": [ "<leader>", "b", "d" ],
             "commands": [ "workbench.action.closeActiveEditor" ]
+        },
+        {
+            "before": [ "<leader>", "b", "D" ],
+            "commands": [ "workbench.action.closeOtherEditors" ]
+        },
+        {
+            "before": [ "<leader>", ">", ">" ],
+            "commands": [ "workbench.action.moveEditorRightInGroup" ]
+        },
+        {
+            "before": [ "<leader>", "<", "<" ],
+            "commands": [ "workbench.action.moveEditorLeftInGroup" ]
+        },
+        {
+            "before": [ "<leader>", "H" ],
+            "commands": [ "workbench.action.moveEditorToLeftGroup" ]
+        },
+        {
+            "before": [ "<leader>", "J" ],
+            "commands": [ "workbench.action.moveEditorToBelowGroup" ]
+        },
+        {
+            "before": [ "<leader>", "K" ],
+            "commands": [ "workbench.action.moveEditorToAboveGroup" ]
+        },
+        {
+            "before": [ "<leader>", "L" ],
+            "commands": [ "workbench.action.moveEditorToRightGroup" ]
         },
         {
             "before": [ "<leader>", "w", "d" ],
@@ -106,7 +325,27 @@
         {
             "before": [ "<leader>", "w", "l" ],
             "commands": [ "workbench.action.focusRightGroup" ]
-        }
+        },
+        {
+            "before": [ "<leader>", "w", "H" ],
+            "commands": [ "workbench.action.moveActiveEditorGroupLeft" ]
+        },
+        {
+            "before": [ "<leader>", "w", "J" ],
+            "commands": [ "workbench.action.moveActiveEditorGroupDown" ]
+        },
+        {
+            "before": [ "<leader>", "w", "K" ],
+            "commands": [ "workbench.action.moveActiveEditorGroupUp" ]
+        },
+        {
+            "before": [ "<leader>", "w", "L" ],
+            "commands": [ "workbench.action.moveActiveEditorGroupRight" ]
+        },
+        {
+            "before": [ "<leader>", "a", "p" ],
+            "commands": [ "editor.action.peekDefinition" ]
+        },
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -117,17 +356,579 @@
             "before": [ "<" ],
             "commands": [ "editor.action.outdentLines" ]
         },
+        {
+            "before": [ "<C-n>" ],
+            "commands": [ "editor.action.addSelectionToNextFindMatch" ]
+        },
+        {
+            "before": [ "<C-x>" ],
+            "commands": [ "editor.action.moveSelectionToNextFindMatch" ]
+        }
     ],
-    "window.zoomLevel": 0,
-    "scm.diffDecorations": "overview",
+
+    // "markdown.preview.fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif",
+    "markdown.preview.fontFamily": "'PingFang SC', 'Microsoft YaHei', 'Segoe UI Emoji', sans-serif",
+    "markdown.preview.fontSize": 14,
+    "markdown.preview.lineHeight": 1.15,
+    "markdown.preview.scrollEditorWithPreview": false,
+    "markdown.preview.scrollPreviewWithEditor": false,
+    "markdown.preview.markEditorSelection": false,
+
+    "markdown-preview-enhanced.liveUpdate": false,
+    "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "markdown-preview-enhanced.frontMatterRenderingOption": "code block",
+    "markdown-preview-enhanced.mathInlineDelimiters": [
+        [ "$", "$" ],
+        [ "$$", "$$" ],
+        [ "\\(", "\\)" ]
+    ],
+    "markdown-preview-enhanced.mathBlockDelimiters": [
+        [ "$$", "$$" ],
+        //[ "\\[", "\\]" ]
+    ],
+    "markdown-preview-enhanced.previewTheme": "github-dark.css",
+    "markdown-preview-enhanced.scrollSync": false,
+    "markdown-preview-enhanced.chromePath": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "markdown-preview-enhanced.pandocArguments": ["-t pdf"],
+    "markdown-table-formatter.enableSort": false,
+
+    "asciidoc.preview.scrollEditorWithPreview": false,
+
+    "todohighlight.isEnable": true,
+    "todohighlight.keywords": [
+        {
+            "text": "TODO",
+            "regex": {
+                "pattern": "(TODO|CMBK)(\\s?[\\(\\[]\\S+?[\\)\\]])?:?|[\\\\@]todo"
+            },
+            "color": "#fafbfc",
+            "backgroundColor": "#fb8532",
+            "overviewRulerColor": "#fb8532"
+        },
+        {
+            "text": "DEPRECATE",
+            "regex": {
+                "pattern": "DEPRECATED(\\s?[\\(\\[]\\S+?[\\)\\]])?:?|[\\\\@]deprecated"
+            },
+            "color": "#fafbfc",
+            "backgroundColor": "#f00",
+            "overviewRulerColor": "#f00"
+        },
+        {
+            "text": "DEBUG",
+            "regex": {
+                "pattern": "DEBUG(\\s?[\\(\\[]\\S+?[\\)\\]])?:?|[\\\\@]bug"
+            },
+            "color": "#fafbfc",
+            "backgroundColor": "#ea4a5a",
+            "overviewRulerColor": "#ea4a5a"
+        },
+        {
+            "text": "NOTE",
+            "regex": {
+                "pattern": "NOTE(\\s?[\\(\\[]\\S+?[\\)\\]])?:?|[\\\\@]note"
+            },
+            "color": "#c8e1ff",
+            "backgroundColor": "#0000",
+            "overviewRulerColor": "#0000"
+        },
+        {
+            "text": "HACK",
+            "regex": {
+                "pattern": "HACK(\\s?[\\(\\[]\\S+?[\\)\\]])?:?",
+            },
+            "color": "#f9b3dd",
+            "backgroundColor": "#0000",
+            "overviewRulerColor": "#0000"
+        },
+        {
+            "text": "PERF",
+            "regex": {
+                "pattern": "PERF(\\s?[\\(\\[]\\S+?[\\)\\]])?:?",
+            },
+            "color": "#fafbfc",
+            "backgroundColor": "#28a745",
+            "overviewRulerColor": "#28a745"
+        },
+    ],
+
     "git.autofetch": true,
     "git.confirmSync": false,
-    "python.pythonPath": "C:\\Users\\smdsbz\\AppData\\Local\\conda\\conda\\envs\\ml\\python.exe",
-    "python.jediEnabled": false,
-    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
-    "workbench.sideBar.location": "left",
-    "workbench.statusBar.visible": true,
-    "explorer.confirmDragAndDrop": false,
-    "todohighlight.isEnable": true,
-    "workbench.colorTheme": "One Dark Pro",
+    "git.decorations.enabled": false,
+    "scm.diffDecorations": "none",
+    "diffEditor.ignoreTrimWhitespace": true,
+
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.classpath": true,
+        "**/.factorypath": true,
+        "**/.project": true,
+        "**/.settings": true
+    },
+
+    "C_Cpp.simplifyStructuredComments": false,
+
+    "python.showStartPage": false,
+    "python.languageServer": "Pylance",
+    "python.pythonPath": "C:\\ProgramData\\Miniconda3\\python.exe",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportUnknownParameterType": "none",
+        "reportUnknownVariableType": "none",
+        "reportUnknownArgumentType": "none",
+        "reportUnknownMemberType": "none",
+        "reportUnknownLambdaType": "none",
+        "reportUnboundVariable": "information",
+        "reportUntypedFunctionDecorator": "information",
+        "reportUntypedClassDecorator": "information",
+        "reportMissingTypeStubs": "none",
+        "reportMissingTypeArgument": "none",
+        "reportMissingParameterType": "none",
+        "reportUnusedFunction": "none",
+        "reportUnusedVariable": "information",
+        "reportUnusedClass": "none",
+        "reportUnusedImport": "information",
+        "reportUnnecessaryIsInstance": "information",
+        "reportPrivateUsage": "none",
+        "reportWildcardImportFromLibrary": "none",
+        "reportOptionalMemberAccess": "information",
+        "reportOptionalOperand": "information",
+        "reportOptionalCall": "information",
+        "reportOptionalContextManager": "information",
+        "reportOptionalIterable": "information",
+        "reportOptionalSubscript": "information",
+        "reportCallInDefaultInitializer": "information",
+        "reportIncompatibleMethodOverride": "error",
+    },
+
+    "ltex.additionalRules.motherTongue": "zh-CN",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "C:\\texlive\\2021\\bin\\win32\\latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "C:\\texlive\\2021\\bin\\win32\\latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "C:\\texlive\\2021\\bin\\win32\\latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "xelatex",
+            "command": "C:\\texlive\\2021\\bin\\win32\\xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "C:\\texlive\\2021\\bin\\win32\\pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "C:\\texlive\\2021\\bin\\win32\\bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        // {
+        //     "name": "rnw2pdf",
+        //     "command": "Rscript",
+        //     "args": [
+        //         "-e",
+        //         "knitr::knit2pdf('%DOCFILE%')"
+        //     ],
+        //     "env": {}
+        // }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdf->bib->pdf->pdf",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xe->bib->xe->xe",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdf->pdf",
+            "tools": [
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        // {
+        //     "name": "latexmk",
+        //     "tools": [
+        //         "latexmk"
+        //     ]
+        // },
+        // {
+        //     "name": "latexmk (latexmkrc)",
+        //     "tools": [
+        //         "latexmk_rconly"
+        //     ]
+        // },
+        // {
+        //     "name": "latexmk (lualatex)",
+        //     "tools": [
+        //         "lualatexmk"
+        //     ]
+        // },
+        // {
+        //     "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+        //     "tools": [
+        //         "pdflatex",
+        //         "bibtex",
+        //         "pdflatex",
+        //         "pdflatex"
+        //     ]
+        // }
+        // {
+        //     "name": "Compile Rnw files",
+        //     "tools": [
+        //         "rnw2pdf"
+        //     ]
+        // }
+    ],
+    "latex-workshop.chktex.enabled": false,
+
+    "cmake.configureOnOpen": false,
+    "cmake.statusbar.visibility": "compact",
+    "cmake.statusbar.advanced": {
+        "workspace": { "visibility": "hidden" },
+        "build": { "visibility": "hidden" },
+        "buildTarget": { "visibility": "default" },
+        "kit": { "visibility": "hidden" },
+        "ctest": { "visibility": "hidden" },
+        "launch": { "visibility": "hidden" },
+        "debug": { "visibility": "hidden" },
+        "launchTarget": { "visibility": "hidden" }
+    },
+
+    "doxdocgen.generic.authorName": "smdsbz",
+    "doxdocgen.generic.authorEmail": "69406681@qq.com",
+    "doxdocgen.generic.briefTemplate": "",
+    "doxdocgen.generic.returnTemplate": "@return ",
+
+    "yaclock.prefix": "",
+
+    "extensions.ignoreRecommendations": true,
+
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.iconTheme": null,
+    "git.ignoreLegacyWarning": true,
+
+    "screencastMode.fontSize": 32,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "browser-preview.chromeExecutable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    "terminal.integrated.tabs.enabled": true,
+    "editor.cursorStyle": "line",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "security.workspace.trust.untrustedFiles": "open",
+    "notebook.cellToolbarLocation": {
+        "default": "hidden",
+    },
+
+    "editor.semanticHighlighting.enabled": false,
+    "editor.tokenColorCustomizations": {
+        "keywords": "#d4d4d4",
+        "comments": "#777777",
+        "numbers": "#d4d4d4",
+        "textMateRules": [
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "keyword.other.unit",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                },
+            },
+            {
+                "scope": "keyword.other.unit.user-defined.cpp",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                },
+            },
+            {
+                "scope": "constant.numeric.decimal.cpp",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                },
+            },
+            {
+                "scope": "keyword.operator",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                },
+            },
+            {
+                "scope": "keyword.operator.sizeof",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "keyword.operator.typeid",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "keyword.operator.noexcept",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "keyword.operator.cast",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                },
+            },
+            {
+                "scope": "keyword.operator.expression",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                },
+            },
+            {
+                "scope": "keyword.operator.new",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "keyword.operator.logical.python",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "constant.language",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "string.regexp",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "string.quoted.double.cpp",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "variable.language",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "variable.other.enummember",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "storage.modifier",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "support.type.property-name",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "entity.name.function.preprocessor",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "entity.name.tag",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "entity.other.attribute-name",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "meta.preprocessor",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "punctuation.definition.tag",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "punctuation.definition.template-expression.begin",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "punctuation.definition.template-expression.end",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "punctuation.definition.quote.begin.markdown",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "punctuation.definition.list.begin.markdown",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "markup.heading",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "markup.inline.raw",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "markup.bold",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+            {
+                "scope": "meta.embedded.assembly",
+                "settings": {
+                    "foreground": "#d4d4d4",
+                }
+            },
+        ]
+    },
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#000000",
+        "statusBar.background": "#000000",
+        "sideBar.background": "#000000",
+        "editor.background": "#111111",
+        "editor.lineHighlightBackground": "#333333",
+        "editor.lineHighlightBorder": "#333333",
+        "editor.selectionBackground": "#555",
+        "editor.selectionHighlightBorder": "#777",
+        "editor.selectionHighlightBackground": "#33333333",
+        "editorBracketPairGuide.activeBackground1": "#777777",
+        "editorBracketPairGuide.activeBackground2": "#777777",
+        "editorBracketPairGuide.activeBackground3": "#777777",
+        "editorBracketPairGuide.activeBackground4": "#777777",
+        "editorBracketPairGuide.activeBackground5": "#777777",
+        "editorBracketPairGuide.activeBackground6": "#777777",
+        "editorBracketPairGuide.background1": "#77777733",
+        "editorBracketPairGuide.background2": "#77777733",
+        "editorBracketPairGuide.background3": "#77777733",
+        "editorBracketPairGuide.background4": "#77777733",
+        "editorBracketPairGuide.background5": "#77777733",
+        "editorBracketPairGuide.background6": "#77777733",
+    },
+
+    "workbench.editor.splitInGroupLayout": "vertical",
+    "jupyter.askForKernelRestart": false,
+    "window.menuBarVisibility": "compact",
+    "liveshare.accessibility.soundsEnabled": false,
+    "liveshare.accessibility.voiceEnabled": false,
+    "liveshare.showInStatusBar": "whileCollaborating",
+    "workbench.colorTheme": "Plain (Gray)",
+    "workbench.activityBar.visible": false,
 }
